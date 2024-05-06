@@ -1,0 +1,13 @@
+<div class="slider-item">
+  <!-- Mostrar imagen si imageUrl está definido -->
+  @if (sliderElement.imgPath) {
+  <img
+    [class]="class"
+    [src]="sliderElement.imgPath"
+    [alt]="sliderElement.description"
+  />
+  } @else if(sliderElement.description) {
+  <!-- Mostrar texto si text está definido -->
+  <p>{{ sliderElement.description }}</p>
+  }
+</div>

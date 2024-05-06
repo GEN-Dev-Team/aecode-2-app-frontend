@@ -1,0 +1,71 @@
+<div class="flex justify-end mb-4">
+  <app-button data-modal-target="user-modal" data-modal-toggle="user-modal">
+    <span>Agregar registro</span>
+  </app-button>
+  <div
+    id="user-modal"
+    tabindex="-1"
+    aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+  >
+    <app-sign-in-card />
+  </div>
+</div>
+<table
+  class="w-full text-xs text-left rtl:text-right text-gray-500 dark:text-gray-400"
+>
+  <thead
+    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+  >
+    <tr>
+      <th scope="col" class="px-6 py-3">ID</th>
+      <th scope="col" class="px-6 py-3">Full name</th>
+      <th scope="col" class="px-6 py-3">Username</th>
+      <th scope="col" class="px-6 py-3">Sexo</th>
+      <th scope="col" class="px-6 py-3">Email</th>
+      <th scope="col" class="px-6 py-3">Contraseña</th>
+      <th scope="col" class="px-6 py-3">Fecha de nacimiento</th>
+      <th scope="col" class="px-6 py-3">Rol</th>
+      <th scope="col" class="px-6 py-3">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of userList; track item.id_profile) {
+    <tr
+      class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+    >
+      <th
+        scope="row"
+        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+      >
+        {{ item.id_profile }}
+      </th>
+      <td class="px-6 py-4">{{ item.profile_Fullname }}</td>
+      <td class="px-6 py-4">{{ item.username }}</td>
+      <td class="px-6 py-4">{{ item.profile_Gender }}</td>
+      <td class="px-6 py-4">{{ item.profile_email }}</td>
+      <td class="px-6 py-4">{{ item.profile_password }}</td>
+      <td class="px-6 py-4">{{ item.profile_Birthdate }}</td>
+      <td class="px-6 py-4">{{ item.role.role_name }}</td>
+      <td class="flex items-center px-6 py-4">
+        <button
+          data-modal-target="default-modal"
+          data-modal-toggle="default-modal"
+          (click)="loadUser(item)"
+          type="button"
+          class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+        >
+          <app-svg-edit />
+        </button>
+        <button
+          (click)="deleteUser(item.id_profile!)"
+          type="button"
+          class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3"
+        >
+          <app-sgv-trash />
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

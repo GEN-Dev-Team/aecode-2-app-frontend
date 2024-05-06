@@ -1,0 +1,25 @@
+label,
+h4 {
+  font-family: "Ruberoid-Regular";
+}
+
+input {
+  font-family: "PlusJakartaSans-Light";
+}
+
+.a-forget-password,
+.remember-password-label {
+  font-family: "PlusJakartaSans-Medium";
+}
+
+button {
+  font-family: "PlusJakartaSans-SemiBold";
+}
+
+.register-container {
+  font-family: "PlusJakartaSans-Regular";
+}
+
+.remember:checked {
+  background-color: #381187;
+}

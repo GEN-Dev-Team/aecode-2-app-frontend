@@ -1,0 +1,34 @@
+/*CSS para el slider 
+*/
+.slider-container {
+  background-color: #eeeeee;
+}
+
+.slider .slider-slide {
+  animation: 80s slider infinite linear;
+}
+
+@keyframes slider {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/*CSS para el slider*/
+.sliderText .slider-slide {
+  animation: 120s sliderText infinite linear;
+}
+
+@keyframes sliderText {
+  from {
+    transform: translateX(-48%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}

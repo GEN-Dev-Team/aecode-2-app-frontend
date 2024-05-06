@@ -1,0 +1,41 @@
+<div class="log-in-container bg-[#F7F9FB] py-5">
+  <app-main-container>
+    <div class="grid grid-cols-2">
+      <div class="text-center justify-center flex flex-col">
+        <span class="welcome-text text-[#7837DD] text-3xl py-3"
+          >¡Bienvenido a AECODE!</span
+        >
+        <span class="log-in-text text-4xl">Iniciar sesión</span>
+        <img
+          class="min-w-[500px] w-3/4 mx-auto"
+          src="../../../../assets/images/log-in-img.png"
+          alt=""
+        />
+      </div>
+
+      <!--Agregamos condicionales para mostar el formulario de registro o inicio de sesión -->
+      @if(callSignInCard == ""){
+      <!--Primero tenemo el login, de este componente hijo sacaremos el valor de callSignInCard en caso querramos crear una cuenta nueva-->
+      <app-log-in-card (callingSignInCard)="getCallSignInCard($event)" />
+      }
+
+      <!--Si el valor de callSignInCard es TRUE, mostramos el formulario de registro o signIn-->
+      @if(callSignInCard) {
+      <app-sign-in-card />
+      }
+    </div>
+    <p class="px-20 pt-20 text-gray-700">
+      Al crear una cuenta, acepta los
+      <span class="text-main-purple underline">
+        <a href="#" class="terms-conditions">Términos de servicio.</a>
+      </span>
+      Para obtener más información sobre las prácticas de privacidad de AECODE,
+      consulte la
+      <span class="text-main-purple underline">
+        <a href="#" class="terms-conditions">Declaración de privacidad.</a>
+      </span>
+      Ocasionalmente le enviaremos correos electrónicos relacionados con la
+      cuenta.
+    </p>
+  </app-main-container>
+</div>

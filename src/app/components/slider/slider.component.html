@@ -1,0 +1,29 @@
+<div class="slider-container">
+  <div class="slider relative flex overflow-hidden font-bold text-xl">
+    <div class="slider-slide flex gap-x-5">
+      @for (sliderElement of sliderSoftwareList; track
+      sliderElement.description) {
+      <app-slider-element class="size-40" [sliderElement]="sliderElement" />
+      }
+    </div>
+  </div>
+
+  <div
+    class="sliderText pt-4 relative overflow-hidden flex text-xl text-nowrap"
+  >
+    <div class="slider-slide flex gap-x-20">
+      @for (sliderElement of sliderText; track sliderElement.description) {
+      <app-slider-element class="" [sliderElement]="sliderElement" />
+      }
+    </div>
+  </div>
+
+  <div class="slider relative flex overflow-hidden font-bold text-xl">
+    <div class="slider-slide flex gap-x-5">
+      @for (sliderElement of sliderLanguagesList; track
+      sliderElement.description) {
+      <app-slider-element class="size-40" [sliderElement]="sliderElement" />
+      }
+    </div>
+  </div>
+</div>

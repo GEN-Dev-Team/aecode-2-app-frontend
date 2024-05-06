@@ -1,0 +1,14 @@
+h3,
+button {
+  font-family: "Ruberoid-Bold";
+}
+
+h4,
+.card-profile-title {
+  font-family: "PlusJakartaSans-Medium";
+}
+
+p,
+.card-profile-description {
+  font-family: "PlusJakartaSans-Regular";
+}

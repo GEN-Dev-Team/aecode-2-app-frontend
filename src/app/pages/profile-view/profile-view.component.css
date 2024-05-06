@@ -1,0 +1,20 @@
+h2 {
+  font-family: "Ruberoid-Bold";
+}
+
+h3 {
+  font-family: "PlusJakartaSans-Light";
+}
+
+.contact-profile-button {
+  font-family: "Ruberoid";
+}
+
+p,
+span {
+  font-family: "PlusJakartaSans-Medium";
+}
+
+.edit-profile-button {
+  font-family: "PlusJakartaSans-SemiBold";
+}

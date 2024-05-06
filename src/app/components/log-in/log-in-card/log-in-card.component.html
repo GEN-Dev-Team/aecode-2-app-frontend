@@ -1,0 +1,90 @@
+<div
+  class="w-full m-auto max-w-sm p-4 bg-[#F0EFFF] border border-[#7837DD] border-opacity-30 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
+>
+  <form class="space-y-6" action="#">
+    <div>
+      <label
+        for="email"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Correo Electrónico</label
+      >
+      <input
+        type="email"
+        name="email"
+        id="email"
+        class="bg-[#F0EFFF] border border-main-purple placeholder:text-main-purple placeholder:text-opacity-50 text-gray-900 text-sm rounded-lg focus:ring-main-purple focus:border-main-purple block w-full p-2.5"
+        placeholder="Ingrese su correo electronico"
+        required
+      />
+    </div>
+    <div class="relative">
+      <label
+        for="password"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Contraseña</label
+      >
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Ingrese su contraseña "
+        class="bg-transparent border placeholder:text-main-purple placeholder:text-opacity-50 border-main-purple text-gray-900 text-sm rounded-lg focus:ring-main-purple focus:border-main-purple block w-full p-2.5"
+        required
+      />
+      <button>
+        <app-svg-view-password
+          class="absolute text-main-purple w-5 right-[5%] top-[42%] z-10"
+        />
+      </button>
+    </div>
+    <div class="flex items-center">
+      <div class="flex items-center">
+        <div class="flex items-center h-5">
+          <input
+            id="remember"
+            type="checkbox"
+            value=""
+            class="remember w-4 h-4 border border-main-purple focus:ring-transparent rounded bg-transparent"
+            required
+          />
+        </div>
+        <label
+          for="remember"
+          class="remember-password-label ms-2 text-xs font-medium"
+          >Recordar contraseña</label
+        >
+      </div>
+      <a
+        href="#"
+        class="a-forget-password ms-auto text-xs text-main-purple underline dark:text-blue-500"
+        >Olvidé mi contraseña</a
+      >
+    </div>
+    <button
+      type="submit"
+      class="w-full shadow-md text-white bg-main-purple border border-main-purple hover:opacity-95 focus:border-white font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+      Iniciar sesión
+    </button>
+
+    <h4 class="text-center">Continuar con</h4>
+    <div class="flex flex-row justify-center gap-x-5">
+      <div class="rounded-full size-8 content-center bg-black bg-opacity-90">
+        <app-svg-apple class="size-6 mx-auto pb-0.5" />
+      </div>
+      <app-svg-google class="size-8" />
+    </div>
+  </form>
+  <div
+    class="register-container text-center text-xs font-medium mt-6 text-gray-900 dark:text-mainborder-main-purple"
+  >
+    ¿No estas registrado?
+    <!--En el componente hijo vamos a llamar a una función con el evento click-->
+    <button
+      (click)="callSignInCard()"
+      class="text-main-purple underline text-xs"
+    >
+      Crea una cuenta
+    </button>
+  </div>
+</div>

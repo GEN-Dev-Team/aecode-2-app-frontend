@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Ruberoid-Bold";
+  src: url("assets/fonts/Ruberoid/Ruberoid-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "Ruberoid-Regular";
+  src: url("assets/fonts/Ruberoid/Ruberoid-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Ruberoid-SemiBold";
+  src: url("assets/fonts/Ruberoid/Ruberoid-SemiBold.otf") format("opentype");
+}
+@font-face {
+  font-family: "Ruberoid-Medium";
+  src: url("assets/fonts/Ruberoid/Ruberoid-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: "Ruberoid-Light";
+  src: url("assets/fonts/Ruberoid/Ruberoid-Light.otf") format("opentype");
+}
+@font-face {
+  font-family: "PlusJakartaSans-Regular";
+  src: url("assets/fonts/Plus Jakarta/PlusJakartaSans-Regular.ttf")
+    format("truetype");
+}
+@font-face {
+  font-family: "PlusJakartaSans-SemiBold";
+  src: url("assets/fonts/Plus Jakarta/PlusJakartaSans-SemiBold.ttf")
+    format("truetype");
+}
+@font-face {
+  font-family: "PlusJakartaSans-Bold";
+  src: url("assets/fonts/Plus Jakarta/PlusJakartaSans-Bold.ttf")
+    format("truetype");
+}
+@font-face {
+  font-family: "PlusJakartaSans-Medium";
+  src: url("assets/fonts/Plus Jakarta/PlusJakartaSans-Medium.ttf")
+    format("truetype");
+}
+@font-face {
+  font-family: "PlusJakartaSans-Light";
+  src: url("assets/fonts/Plus Jakarta/PlusJakartaSans-Light.ttf")
+    format("truetype");
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background-color: #b4bbbf;
+}
