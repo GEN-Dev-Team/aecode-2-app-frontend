@@ -30,7 +30,7 @@
     </tr>
   </thead>
   <tbody>
-    @for (item of userList; track item.id_profile) {
+    @for (item of userList; track item.id) {
     <tr
       class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
     >
@@ -38,7 +38,7 @@
         scope="row"
         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
       >
-        {{ item.id_profile }}
+        {{ item.id }}
       </th>
       <td class="px-6 py-4">{{ item.profile_Fullname }}</td>
       <td class="px-6 py-4">{{ item.username }}</td>
@@ -58,7 +58,7 @@
           <app-svg-edit />
         </button>
         <button
-          (click)="deleteUser(item.id_profile!)"
+          (click)="deleteUser(item.id!)"
           type="button"
           class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3"
         >

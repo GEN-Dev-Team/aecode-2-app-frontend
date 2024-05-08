@@ -40,6 +40,7 @@ export class SignInCardComponent implements OnChanges, OnInit {
     private roleService: RoleService
   ) {
     this.userForm = this.fb.group({
+      id_profile: new FormControl('', [Validators.required]),
       profile_Fullname: new FormControl('', [Validators.required]),
       username: new FormControl('', [Validators.required]),
       profile_Gender: new FormControl('', [Validators.required]),
@@ -60,13 +61,14 @@ export class SignInCardComponent implements OnChanges, OnInit {
   ngOnChanges(): void {
     if (this.data) {
       this.userForm.patchValue({
+        id: this.data.id,
         profile_Fullname: this.data.profile_Fullname,
         username: this.data.username,
         profile_Gender: this.data.profile_Gender,
         profile_email: this.data.profile_email,
         profile_password: this.data.profile_password,
         profile_Birthdate: this.data.profile_Birthdate,
-        rol: this.data.role.id_role,
+        role: this.data.role.role_name,
       });
     }
   }
@@ -75,7 +77,7 @@ export class SignInCardComponent implements OnChanges, OnInit {
     if (this.userForm.valid) {
       if (this.data) {
         this.userService
-          .updateUser(this.data.id_profile as number, this.userForm.value)
+          .updateUser(this.data.id as number, this.userForm.value)
           .subscribe({
             next: (response) => {
               console.log('User updated successfully!');

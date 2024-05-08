@@ -1,10 +1,15 @@
 .home-title {
   font-family: "Ruberoid-Bold";
+  font-size: 64px;
 }
 .home-subtitle {
-  font-family: "Ruberoid-Light";
+  font-family: "Ruberoid-Medium";
+  font-size: 28px;
+  letter-spacing: 4px;
 }
 
 h3 {
   font-family: "PlusJakartaSans-Regular";
+  font-size: 22px;
+  letter-spacing: 0px;
 }

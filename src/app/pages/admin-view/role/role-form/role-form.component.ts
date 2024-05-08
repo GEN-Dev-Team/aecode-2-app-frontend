@@ -22,12 +22,9 @@ export class RoleFormComponent implements OnChanges, OnInit {
   Role!: Role;
   roleForm: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-
-    private roleService: RoleService
-  ) {
+  constructor(private fb: FormBuilder, private roleService: RoleService) {
     this.roleForm = this.fb.group({
+      id: new FormControl('', [Validators.required]),
       role_name: new FormControl('', [Validators.required]),
       role_description: new FormControl('', [Validators.required]),
     });
@@ -40,8 +37,9 @@ export class RoleFormComponent implements OnChanges, OnInit {
   ngOnChanges(): void {
     if (this.data) {
       this.roleForm.patchValue({
-        fullname: this.data.role_name,
-        username: this.data.role_description,
+        id: this.data.id_role,
+        role_name: this.data.role_name,
+        role_description: this.data.role_description,
       });
     }
   }

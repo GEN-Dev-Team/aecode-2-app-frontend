@@ -8,6 +8,8 @@ import { SvgEditComponent } from '../../components/icons/svg-edit/svg-edit.compo
 import { ButtonComponent } from '../../components/button/button.component';
 import { UserComponent } from './user/user.component';
 import { RoleComponent } from './role/role.component';
+import { RoleFormComponent } from './role/role-form/role-form.component';
+import { Role } from '../../models/role';
 
 @Component({
   selector: 'app-admin-view',
@@ -20,59 +22,30 @@ import { RoleComponent } from './role/role.component';
     ButtonComponent,
     UserComponent,
     RoleComponent,
+    RoleFormComponent,
   ],
   templateUrl: './admin-view.component.html',
   styleUrl: './admin-view.component.css',
 })
-export class AdminViewComponent implements OnInit {
+export class AdminViewComponent {
   userList: User[] = [];
   user!: User;
+  role!: Role;
   constructor(private userService: UserServiceService) {}
 
   // Declarar variables para los eventos
-  callTable: string = 'UsersTable';
+  callTable: string = 'RolesTable';
 
   // Eventos para mostrar las tablas
   getCallTable(callUsersTableValue: string) {
     this.callTable = callUsersTableValue;
   }
 
-  ngOnInit(): void {
-    this.getAllUsers();
+  getUserData(user: User) {
+    this.user = user;
   }
 
-  getAllUsers() {
-    this.userService.getAllUsers().subscribe((response) => {
-      this.userList = response;
-    });
-  }
-
-  getUser(id: number) {
-    this.userService.getUser(id).subscribe({
-      next: (response) => {
-        this.user = response;
-      },
-    });
-  }
-
-  deleteUser(id: number) {
-    this.userService.deleteUser(id).subscribe({
-      next: (response) => {
-        this.userList = response;
-        this.getAllUsers();
-        console.log('User deleted successfully!');
-      },
-    });
-  }
-
-  updateUser(id: number, user: User) {
-    this.userService.updateUser(id, user).subscribe((response) => {
-      this.getAllUsers();
-      console.log('User updated successfully!');
-    });
-  }
-
-  loadUser(userData: User) {
-    this.user = userData;
+  getRoleData(role: Role) {
+    this.role = role;
   }
 }

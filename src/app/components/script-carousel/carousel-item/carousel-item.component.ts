@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
+import { Script } from '../../slider/models/script';
 import { SvgBookmarkComponent } from '../../icons';
 import { SvgViewComponent } from '../../icons/svg-view/svg-view.component';
 import { SvgHeartComponent } from '../../icons/svg-heart/svg-heart.component';
 import { SvgCommentComponent } from '../../icons/svg-comment/svg-comment.component';
-import { ReactionItemComponent } from './reaction-item/reaction-item.component';
-import { Script } from '../../slider/models/script';
+import { ReactionItemComponent } from '../../scripts-container/script-box/reaction-item/reaction-item.component';
 
 @Component({
-  selector: 'app-script-box',
+  selector: 'app-carousel-item',
   standalone: true,
   imports: [
     SvgBookmarkComponent,
@@ -16,9 +16,9 @@ import { Script } from '../../slider/models/script';
     SvgCommentComponent,
     ReactionItemComponent,
   ],
-  templateUrl: './script-box.component.html',
-  styleUrl: './script-box.component.css',
+  templateUrl: './carousel-item.component.html',
+  styleUrl: './carousel-item.component.css',
 })
-export class ScriptBoxComponent {
+export class CarouselItemComponent {
   @Input() script: Script | undefined;
 }

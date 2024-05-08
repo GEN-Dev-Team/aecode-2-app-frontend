@@ -1,9 +1,10 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-[1440px]">
-  <div class="md:grid-cols-[1fr_3fr] flex flex-row">
+  <div class="md:grid-cols-[1fr_3fr] flex flex-row bg-white">
     <app-side-bar (callTable)="getCallTable($event)" />
     <div class="p-4 w-full">
       @if (callTable == "UsersTable") {
-      <app-user />} @else if(callTable=="RolesTable"){ <app-role />}
+      <app-user />} @else if(callTable=="RolesTable"){
+      <app-role (returnRole)="getRoleData($event)" />}
     </div>
   </div>
 </div>
@@ -14,6 +15,7 @@
   aria-hidden="true"
   class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
 >
-  >
-  <app-sign-in-card [data]="user" />
+  > @if (callTable == "UsersTable") {
+  <app-sign-in-card [data]="user" />} @else if(callTable=="RolesTable"){
+  <app-role-form [data]="role" />}
 </div>

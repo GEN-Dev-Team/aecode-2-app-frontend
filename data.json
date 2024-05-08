@@ -12,7 +12,8 @@
       "profile_Birthdate": "2000-10-02",
       "profile_email": "manuel@gmail.com",
       "username": "manuel123",
-      "profile_password": "manuel123"
+      "profile_password": "manuel123",
+      "id": "5aa3"
     },
     {
       "id_profile": 2,
@@ -26,43 +27,40 @@
       "profile_Birthdate": "2000-10-02",
       "profile_email": "manuel@gmail.com",
       "username": "manuel123",
-      "profile_password": "manuel123"
-    },
-    {
-      "id_profile": 3,
-      "role": {
-        "id_role": 1,
-        "role_name": "Usuario",
-        "role_description": "Persona que interactua con la plataforma."
-      },
-      "profile_Fullname": "Manuel Chaucas",
-      "profile_Gender": "M",
-      "profile_Birthdate": "2000-10-02",
-      "profile_email": "manuel@gmail.com",
-      "username": "manuel123",
-      "profile_password": "manuel123"
-    },
-    {
-      "id": "1457",
-      "profile_Fullname": "Sthepen Jose",
-      "username": "administrator",
-      "profile_Gender": "0",
-      "profile_email": "sthepen.espinoza29@gmail.com",
-      "profile_password": "ASD",
-      "profile_Birthdate": "2024-05-02",
-      "role": "2"
+      "profile_password": "manuel123",
+      "id": "e757"
     }
   ],
   "roles": [
     {
-      "id_role": 1,
+      "id": "1",
       "role_name": "Usuario",
       "role_description": "Persona que interactua con la plataforma."
     },
     {
-      "id_role": 2,
+      "id": 2,
       "role_name": "Administrador",
       "role_description": "Persona con privilegios en la plataforma."
+    },
+    {
+      "id": 3,
+      "role_name": "Invitado",
+      "role_description": "No tiene permisos"
+    },
+    {
+      "id": 4,
+      "role_name": "Superadmin",
+      "role_description": "El superadmin tiene acceso a todos los permisos"
+    },
+    {
+      "id": 5,
+      "role_name": "Superadmin2",
+      "role_description": "Permisos para todo"
+    },
+    {
+      "id": 6,
+      "role_name": "Superadmin2",
+      "role_description": "Permisos para todo"
     }
   ]
 }

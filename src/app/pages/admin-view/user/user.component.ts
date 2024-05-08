@@ -59,5 +59,6 @@ export class UserComponent implements OnInit {
 
   loadUser(userData: User) {
     this.user = userData;
+    console.log(userData);
   }
 }

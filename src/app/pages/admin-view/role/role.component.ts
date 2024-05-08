@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Role } from '../../../models/role';
 import { RoleService } from '../../../core/services/role.service';
 import { SvgEditComponent } from '../../../components/icons/svg-edit/svg-edit.component';
@@ -20,6 +20,7 @@ import { RoleFormComponent } from './role-form/role-form.component';
   styleUrl: './role.component.css',
 })
 export class RoleComponent implements OnInit {
+  @Output() returnRole = new EventEmitter<Role>();
   roleList: Role[] = [];
   role!: Role;
 
@@ -29,6 +30,10 @@ export class RoleComponent implements OnInit {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.getAllRoles();
+  }
+
+  loadRole(roleData: Role) {
+    this.returnRole.emit(roleData);
   }
 
   getAllRoles() {
@@ -55,9 +60,5 @@ export class RoleComponent implements OnInit {
     this.roleService.deleteRole(id).subscribe((response) => {
       console.log('Role deleted successfully!');
     });
-  }
-
-  loadRole(roleData: Role) {
-    this.role = roleData;
   }
 }
