@@ -4,7 +4,7 @@ export interface FilterGroup {
 }
 
 export interface FilterItem {
+  filterItemId?: number;
   filterItemName: string;
   filterItemchecked?: boolean;
-  filterItemImgPath: string;
 }

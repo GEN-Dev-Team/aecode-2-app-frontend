@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FilterItemComponent } from './filter-item/filter-item.component';
+import { FilterGroup, FilterItem } from './model';
 
 @Component({
   selector: 'app-aside-filter-item',
@@ -8,4 +9,6 @@ import { FilterItemComponent } from './filter-item/filter-item.component';
   templateUrl: './aside-filter-item.component.html',
   styleUrl: './aside-filter-item.component.css',
 })
-export class AsideFilterItemComponent {}
+export class AsideFilterItemComponent {
+  @Input() filterGroup!: FilterGroup;
+}

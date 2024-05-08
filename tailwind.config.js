@@ -15,6 +15,7 @@ module.exports = {
       "morado-1": "#8F60EA",
       gris: "#B4BBBF",
       "gris-1": "#CAD5DA",
+      "gris-2": "#EFF9FE",
     },
     extend: {},
   },

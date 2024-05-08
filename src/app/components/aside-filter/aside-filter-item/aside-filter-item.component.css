@@ -14,3 +14,8 @@
   background-color: #777;
   border-radius: 4px;
 }
+
+.category-name {
+  font-family: "plusjakartasans-SemiBold";
+  font-size: 14px;
+}
