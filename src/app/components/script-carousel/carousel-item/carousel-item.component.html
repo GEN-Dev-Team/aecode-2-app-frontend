@@ -1,38 +1,57 @@
-<div
-  class="flex flex-col mx-auto rounded-md bg-medium-gray w-[708px] h-[391px]"
->
+<div class="flex flex-col mx-auto rounded-md bg-gris-2 w-[708px] h-[391px]">
   <div class="pb-2 h-[250px] rounded-t-md">
     <img class="w-full h-full rounded-t-md" [src]="script?.script_img" alt="" />
   </div>
 
-  <div class="px-4 pt-1">
-    <h4>{{ script?.script_name }}</h4>
-    <div class="-mt-4 text-xs text-gray-500">
+  <div class="px-4 pt-2">
+    <h4 class="script-title">{{ script?.script_name }}</h4>
+    <div class="script-public-date -mt-3 text-xs text-gray-500">
       <span>Publicado</span>
       <span class="px-1.5">•</span>
       <span>Hace 10 días</span>
     </div>
-    <hr class="my-5" />
-    <div class="flex gap-x-3 flex-row pb-5">
-      <app-reaction-item>
-        <app-svg-comment class="size-5 text-white" />
-        <span class="text-xs text-gray-500">10 comments</span>
-      </app-reaction-item>
 
-      <app-reaction-item>
-        <app-svg-heart class="size-5" />
-        <span class="text-xs text-gray-500">9k Me gusta</span>
-      </app-reaction-item>
+    <div class="flex flex-row items-center py-2 w-full justify-between">
+      <button
+        type="button"
+        class="flex flex-row gap-y-2 mr-8 text-sm items-center text-white py-4 w-[143px] rounded-full"
+      >
+        <img
+          class="size-10 rounded-full"
+          src="https://github.com/lucianets.png"
+          alt="user photo"
+        />
+        <div class="flex flex-row items-center">
+          <span
+            class="script-author w-[95px] ms-2 truncate overflow-hidden text-black"
+            >Lucia Cordova
+          </span>
+        </div>
+      </button>
 
-      <app-reaction-item>
-        <app-svg-view class="size-5" />
-        <span class="text-xs text-gray-500"> 1.5k Vistas</span>
-      </app-reaction-item>
+      <div class="flex flex-row gap-x-[25px] mr-10">
+        <app-reaction-item>
+          <app-svg-heart class="size-[19px]" />
+          <span class="text-base text-gray-500">9k </span>
+        </app-reaction-item>
 
-      <app-reaction-item>
-        <app-svg-bookmark class="size-5" />
-        <span class="text-xs text-gray-500">3.6k</span>
-      </app-reaction-item>
+        <app-reaction-item>
+          <app-svg-comment class="size-[19px] text-white" />
+          <span class="text-base text-gray-500">10 </span>
+        </app-reaction-item>
+
+        <app-reaction-item>
+          <app-svg-view class="size-[19px]" />
+          <span class="text-base text-gray-500"> 1.5k </span>
+        </app-reaction-item>
+
+        <app-reaction-item>
+          <app-svg-unbookmark class="size-[19px]" />
+          <span class="text-base text-gray-500">3.6k</span>
+        </app-reaction-item>
+      </div>
+
+      <app-tag-button class="justify-end">Automatización</app-tag-button>
     </div>
   </div>
 </div>

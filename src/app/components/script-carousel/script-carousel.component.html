@@ -1,6 +1,6 @@
 <div
   id="default-carousel"
-  class="relative w-[842px] h-[430px] mx-auto bg-medium-gray"
+  class="relative w-[842px] h-[430px] mx-auto drop-shadow-lg"
   data-carousel="slide"
 >
   <!-- Carousel wrapper -->
@@ -14,33 +14,29 @@
   </div>
   <!-- Slider indicators -->
   <div
-    class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse"
+    class="absolute z-30 flex -translate-x-1/2 bottom-0 left-1/2 gap-x-1 rtl:space-x-reverse"
   >
     <button
       type="button"
-      class="w-3 h-3 rounded-full bg-dark-gray"
-      aria-current="true"
+      class="slider-indicator size-[9px] rounded-full bg-gris-1"
       aria-label="Slide 1"
       data-carousel-slide-to="0"
     ></button>
     <button
       type="button"
-      class="w-3 h-3 rounded-full bg-dark-gray"
-      aria-current="false"
+      class="slider-indicator size-[9px] rounded-full bg-gris-1"
       aria-label="Slide 2"
       data-carousel-slide-to="1"
     ></button>
     <button
       type="button"
-      class="w-3 h-3 rounded-full bg-black"
-      aria-current="false"
+      class="slider-indicator size-[9px] rounded-full bg-gris-1"
       aria-label="Slide 3"
       data-carousel-slide-to="2"
     ></button>
     <button
       type="button"
-      class="w-3 h-3 rounded-full bg-dark-gray"
-      aria-current="false"
+      class="slider-indicator size-[9px] rounded-full bg-gris-1"
       aria-label="Slide 4"
       data-carousel-slide-to="3"
     ></button>
@@ -48,7 +44,7 @@
   <!-- Slider controls -->
   <button
     type="button"
-    class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+    class="absolute top-0 start-0 z-30 flex items-center justify-center pt-[153px] pr-8 cursor-pointer group focus:outline-none"
     data-carousel-prev
   >
     <span
@@ -74,7 +70,7 @@
   </button>
   <button
     type="button"
-    class="absolute top-0 end-0 z-30 flex items-center justify-center h-full cursor-pointer group"
+    class="absolute top-0 end-0 z-30 flex items-center justify-cente pl-8 pt-[153px] cursor-pointer group"
     data-carousel-next
   >
     <span

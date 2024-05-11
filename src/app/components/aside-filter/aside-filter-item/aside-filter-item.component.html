@@ -1,9 +1,9 @@
-<div class="space-y-2 font-medium me-4 bg-gris-2 h-[210px] rounded-md mb-4">
+<div
+  class="space-y-2 font-medium h-[210px] w-[247px] rounded-md mb-4 border-solid border-[1px] border-gris-1"
+>
   <button
     type="button"
-    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-    aria-controls="dropdown-example"
-    data-collapse-toggle="dropdown-example"
+    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 hover:bg-gray-100 border-solid border-b-[1px] border-gris-1"
   >
     <span
       class="category-name flex-1 ms-3 text-left rtl:text-right whitespace-nowrap"
@@ -12,11 +12,10 @@
   </button>
   <ul
     id="dropdown-example"
-    class="dropdown-example overflow-auto h-[164px] py-2 space-y-5 pe-10"
+    class="dropdown-example overflow-auto h-[150px] py-2 space-y-5 pe-10"
   >
     @for (item of filterGroup.filterGroupElements; track item.filterItemId) {
     <app-filter-item [filterItem]="item" />
     }
   </ul>
 </div>
-<hr />

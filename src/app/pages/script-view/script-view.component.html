@@ -21,9 +21,12 @@
         fill-rule="evenodd"
         d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
       ></path>
-    </svg>
-  </button>
+    </svg></button
+></app-main-container>
 
+<hr class="bg-gris-1" />
+
+<app-main-container>
   <div class="flex flex-row justify-between py-2">
     <div class="flex flex-row gap-x-4">
       <app-button class="text-white bg-main-purple rounded-md">
@@ -41,13 +44,15 @@
     </app-button>
   </div>
 </app-main-container>
-<hr />
-<app-main-container>
+
+<hr class="bg-gris-1" />
+
+<div class="w-[1440px] px-[50px] bg-white">
   <div class="grid grid-cols-[1fr_4fr]">
     <app-aside-filter />
-    <div>
+    <div class="mt-[60px]">
       <app-scripts-container />
       <app-paginator />
     </div>
   </div>
-</app-main-container>
+</div>

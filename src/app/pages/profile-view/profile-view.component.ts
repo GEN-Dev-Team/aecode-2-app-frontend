@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MainContainerComponent } from '../../components/layout';
 import { ButtonComponent } from '../../components/button/button.component';
 import { CardProfileComponent } from '../../components/card-profile/card-profile.component';
-import { ScriptsContainerComponent } from '../../components/scripts-container/scripts-container.component';
 import { SvgUploadComponent } from '../../components/icons';
 import { SvgBarsComponent } from '../../components/icons/svg-bars/svg-bars.component';
 import { BudgetComponent } from '../../components/budget/budget.component';
@@ -10,6 +9,7 @@ import { SvgAirplaneComponent } from '../../components/icons/svg-airplane/svg-ai
 import { SvgEditComponent } from '../../components/icons/svg-edit/svg-edit.component';
 import { SvgCameraComponent } from '../../components/icons/svg-camera/svg-camera.component';
 import { SvgProfileFilterComponent } from '../../components/icons/svg-profile-filter/svg-profile-filter.component';
+import { ProfileUploadContainerComponent } from './profile-upload-container/profile-upload-container.component';
 
 @Component({
   selector: 'app-profile-view',
@@ -18,7 +18,7 @@ import { SvgProfileFilterComponent } from '../../components/icons/svg-profile-fi
     MainContainerComponent,
     ButtonComponent,
     CardProfileComponent,
-    ScriptsContainerComponent,
+    ProfileUploadContainerComponent,
     SvgUploadComponent,
     SvgBarsComponent,
     BudgetComponent,
