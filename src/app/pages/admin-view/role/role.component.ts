@@ -14,7 +14,6 @@ import { RoleFormComponent } from './role-form/role-form.component';
     SvgEditComponent,
     SgvTrashComponent,
     RoleFormComponent,
-    RoleFormComponent,
   ],
   templateUrl: './role.component.html',
   styleUrl: './role.component.css',
@@ -50,8 +49,8 @@ export class RoleComponent implements OnInit {
     });
   }
 
-  updateRole(id: number, role: Role) {
-    this.roleService.updateRole(id, role).subscribe((response) => {
+  updateRole(role: Role) {
+    this.roleService.updateRole(role).subscribe((response) => {
       console.log('Role updated successfully!');
     });
   }

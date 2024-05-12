@@ -47,13 +47,11 @@ export class RoleFormComponent implements OnChanges, OnInit {
   onSubmit() {
     if (this.roleForm.valid) {
       if (this.data) {
-        this.roleService
-          .updateRole(this.data.id_role as number, this.roleForm.value)
-          .subscribe({
-            next: (response) => {
-              console.log('Role updated successfully!');
-            },
-          });
+        this.roleService.updateRole(this.roleForm.value).subscribe({
+          next: (response) => {
+            console.log('Role updated successfully!');
+          },
+        });
       } else {
         this.roleService.createRole(this.roleForm.value).subscribe({
           next: (response) => {
