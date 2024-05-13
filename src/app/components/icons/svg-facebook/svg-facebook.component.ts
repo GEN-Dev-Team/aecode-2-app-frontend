@@ -10,7 +10,6 @@ import { Component, Input } from '@angular/core';
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      fill="#381187"
       stroke="currentColor"
       stroke-width="0.5"
       stroke-linecap="round"

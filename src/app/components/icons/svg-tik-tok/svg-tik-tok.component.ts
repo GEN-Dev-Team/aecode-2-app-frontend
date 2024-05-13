@@ -10,7 +10,7 @@ import { Component, Input } from '@angular/core';
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      fill="#381187"
+      [attr.fill]="fill"
       stroke="none"
       stroke-width="1"
       stroke-linecap="round"
@@ -27,4 +27,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SvgTikTokComponent {
   @Input() class = '';
+  @Input() fill = '';
 }

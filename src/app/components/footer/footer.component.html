@@ -1,16 +1,17 @@
-<footer class="bg-medium-gray dark:bg-gray-900 w-[1440px] mx-auto">
-  <div class="mx-auto max-w-screen-xl p-4 py-6 lg:py-8">
-    <div class="grid gap-6 grid-cols-4">
+<footer class="footer-container bg-gris-2 w-[1440px] mx-auto text-xs">
+  <div class="mx-auto px-[50px] py-10 pt-[84px]">
+    <div class="grid grid-cols-4">
       <div>
-        <ul>
-          <li>Información General</li>
-          <li>Pautas Comunitarias</li>
-          <li>Términos y Condiciones</li>
-          <li>Centro de Seguridad</li>
+        <ul class="space-y-[14px]">
+          <li><a href="">Información General</a></li>
+          <li><a href="">Pautas Comunitarias</a></li>
+          <li><a href="">Términos y Condiciones</a></li>
+          <li><a href="">Centro de Seguridad</a></li>
         </ul>
       </div>
       <div>
-        <ul class="text-gray-500 dark:text-gray-400 font-medium">
+        <ul class="font-medium ps-5">
+          <li class="footer-title mb-4">Contactos</li>
           <li class="mb-4">
             <a
               href="https://github.com/themesberg/flowbite"
@@ -23,79 +24,85 @@
               >help&#64;aecode.com</a
             >
           </li>
-          <li>
-            <div class="flex flex-row items-center text-white">
-              <a href="#" class="hover:underline ps-5">
-                <div
-                  class="rounded-full size-[26px] bg-white ps-0.5 content-center"
-                >
-                  <app-svg-linked-in class="size-5" />
-                </div>
-              </a>
-              <a href="#" class="hover:underline ms-5">
-                <div
-                  class="rounded-full size-[26px] bg-white ps-0.5 content-center"
-                >
-                  <app-svg-telegram class="size-5" />
-                </div>
-              </a>
-              <a href="#" class="hover:underline ms-5">
-                <div
-                  class="rounded-full size-[26px] bg-white ps-0.5 content-center"
-                >
-                  <app-svg-facebook class="size-5" />
-                </div>
-              </a>
-              <a href="#" class="hover:underline ms-5">
-                <div
-                  class="rounded-full size-[26px] bg-white ps-0.5 content-center"
-                >
-                  <app-svg-instagram class="size-5" />
-                </div>
-              </a>
-              <a href="#" class="hover:underline ms-5">
-                <div
-                  class="rounded-full size-[26px] bg-white ps-0.5 content-center"
-                >
-                  <app-svg-tik-tok class="size-5" />
-                </div>
-              </a>
-            </div>
+          <li class="mt-4 flex flex-row items-center text-white gap-x-3">
+            <a href="#" class="hover:underline">
+              <app-svg-linked-in class="size-4" />
+            </a>
+            <a href="#" class="hover:underline">
+              <app-svg-telegram class="size-4" />
+            </a>
+            <a href="#" class="hover:underline">
+              <app-svg-facebook class="size-4" />
+            </a>
+            <a href="#" class="hover:underline">
+              <app-svg-instagram class="size-4" />
+            </a>
+            <a href="#" class="hover:underline">
+              <app-svg-tik-tok class="size-4" />
+            </a>
           </li>
         </ul>
       </div>
       <div>
-        <ul class="text-gray-500 dark:text-gray-400 font-medium">
-          <li class="mb-4">
-            <a href="#" class="hover:underline"
-              >Tienes preguntas? <span>Visita nuestro centro de ayuda</span></a
+        <ul class="font-medium">
+          <li class="footer-title mb-4 flex-row flex gap-x-4">
+            <app-svg-question-icon class="size-5" />
+            <a href="#" class="hover:underline flex flex-col">
+              Tienes preguntas?
+              <span class="footer-container"
+                >Visita nuestro centro de ayuda</span
+              ></a
             >
           </li>
-          <li>
-            <a href="#" class="hover:underline"
-              >Gestiona tu cuenta y la privacidad
-              <span>Ve a los ajustes</span></a
+          <li class="footer-title flex-row flex gap-x-4">
+            <app-svg-setting class="size-5" />
+            <a href="#" class="hover:underline flex flex-col">
+              Gestiona tu cuenta y la privacidad
+              <span class="footer-container">Ve a los ajustes</span></a
             >
           </li>
         </ul>
       </div>
       <div>
-        <ul class="text-gray-500 dark:text-gray-400 font-medium">
-          <li class="mb-4">
+        <ul class="font-medium">
+          <li class="mb-1">
             <a href="#" class="hover:underline">Seleccionar</a>
           </li>
           <li>
-            <a href="#" class="hover:underline">Español</a>
+            <button
+              id="dropdownDefaultButton"
+              data-dropdown-toggle="dropdown"
+              class="w-[271px] text-xs justify-between font-medium rounded-lg px-[15px] py-[9px] text-center inline-flex items-center border-[1px] border-[#707070]"
+              type="button"
+            >
+              ESPAÑOL
+              <app-svg-caret-down class="size-3" fill="#989898" />
+            </button>
+
+            <!-- Dropdown menu -->
+            <div
+              id="dropdown"
+              class="z-10 w-[271px] hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
+            >
+              <ul
+                class="py-2 text-xs text-gray-700 dark:text-gray-200"
+                aria-labelledby="dropdownDefaultButton"
+              >
+                <li>
+                  <a href="#" class="block px-4 py-2 text-xs">ESPAÑOL</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-xs">INGLÉS</a>
+                </li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
     </div>
 
-    <div class="sm:flex sm:items-center sm:justify-between pt-10">
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
-        >© 2023 <a href="#" class="hover:underline">AECODE 2</a>. All Rights
-        Reserved.
-      </span>
+    <div class="pt-[73px]">
+      <span>© 2024 All Rights Reserved. </span>
     </div>
   </div>
 </footer>

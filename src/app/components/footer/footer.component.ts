@@ -5,6 +5,10 @@ import { SvgInstagramComponent } from '../icons/svg-instagram/svg-instagram.comp
 import { SvgTikTokComponent } from '../icons/svg-tik-tok/svg-tik-tok.component';
 import { SvgLinkedInComponent } from '../icons/svg-linked-in/svg-linked-in.component';
 import { SvgTelegramComponent } from '../icons/svg-telegram/svg-telegram.component';
+import { SvgCaretUpComponent } from '../icons/svg-caret-up/svg-caret-up.component';
+import { SvgCaretDownComponent } from '../icons/svg-caret-down/svg-caret-down.component';
+import { SvgSettingComponent } from '../icons/svg-setting/svg-setting.component';
+import { SvgQuestionIconComponent } from '../icons/svg-question-icon/svg-question-icon.component';
 
 @Component({
   selector: 'app-footer',
@@ -16,6 +20,10 @@ import { SvgTelegramComponent } from '../icons/svg-telegram/svg-telegram.compone
     SvgTikTokComponent,
     SvgLinkedInComponent,
     SvgTelegramComponent,
+    SvgCaretUpComponent,
+    SvgCaretDownComponent,
+    SvgSettingComponent,
+    SvgQuestionIconComponent,
   ],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css',

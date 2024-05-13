@@ -11,7 +11,7 @@ import { Component, Input } from '@angular/core';
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="#381187"
+      stroke="black"
       stroke-width="1.5"
       stroke-linecap="round"
       stroke-linejoin="round"
