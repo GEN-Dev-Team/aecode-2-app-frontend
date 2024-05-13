@@ -17,6 +17,4 @@ import { SvgViewComponent } from '../../../components/icons/svg-view/svg-view.co
   templateUrl: './script-container.component.html',
   styleUrl: './script-container.component.css',
 })
-export class ScriptContainerComponent {
-  @Input() script: Script | undefined;
-}
+export class ScriptContainerComponent {}
