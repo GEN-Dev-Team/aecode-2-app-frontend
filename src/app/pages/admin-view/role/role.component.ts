@@ -49,12 +49,6 @@ export class RoleComponent implements OnInit {
     });
   }
 
-  updateRole(role: Role) {
-    this.roleService.updateRole(role).subscribe((response) => {
-      console.log('Role updated successfully!');
-    });
-  }
-
   deleteRole(id: number) {
     this.roleService.deleteRole(id).subscribe((response) => {
       console.log('Role deleted successfully!');

@@ -118,11 +118,8 @@
         formControlName="role"
         class="form-control bg-transparent border text-opacity-50 border-main-purple focus:ring-main-purple focus:border-main-purple text-gray-900 text-[10px] rounded-lg block w-full p-1.5"
       >
-        @for (item of roleList; track item.id_role) {
-        <option
-          class="bg-[#F0EFFF] text-main-purple"
-          value="{{ item.id_role }}"
-        >
+        @for (item of roleList; track item.id) {
+        <option class="bg-[#F0EFFF] text-main-purple" value="{{ item.id }}">
           {{ item.role_name }}
         </option>
         }

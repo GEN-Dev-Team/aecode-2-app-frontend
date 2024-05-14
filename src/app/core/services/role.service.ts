@@ -11,29 +11,28 @@ const base_url = environment.base;
 export class RoleService {
   apiurl = 'https://aecode.onrender.com/roles';
   // Local storage requests test
-  localUrl = 'http://localhost:3000/roles';
 
   private backurl = `${base_url}/roles`;
 
   constructor(private http: HttpClient) {}
 
   getAllRoles() {
-    return this.http.get<Role[]>(this.apiurl);
+    return this.http.get<Role[]>(this.backurl);
   }
 
   getRole(id: number): Observable<Role> {
-    return this.http.get<Role>(`${this.apiurl}/${id}`);
+    return this.http.get<Role>(`${this.backurl}/${id}`);
   }
 
   createRole(role: Role) {
-    return this.http.post(this.apiurl, role);
+    return this.http.post(this.backurl, role);
   }
 
   updateRole(role: Role) {
-    return this.http.put(this.apiurl, role);
+    return this.http.put(`${this.backurl}/${role.id}`, role);
   }
 
   deleteRole(id: number): Observable<Role[]> {
-    return this.http.delete<Role[]>(`${this.apiurl}/${id}`);
+    return this.http.delete<Role[]>(`${this.backurl}/${id}`);
   }
 }

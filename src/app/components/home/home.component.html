@@ -18,20 +18,9 @@
   </app-main-container>
 
   <!--Grupo de la izquierda-->
-  <div
-    class="absolute top-[40px] left-[40px] h-[100px] flex flex-row gap-x-[15px]"
-  >
-    <img
-      src="https://github.com/Sthepen-EA.png"
-      alt=""
-      class="size-[100px] rounded-full"
-    />
-    <div
-      class="home-bubble rounded-md bg-celeste-2 text-white text-base h-[44px] p-2 pt-2.5 mt-[15px] flex-nowrap w-fit"
-    >
-      Genial plataforma
-    </div>
-  </div>
+  @for (item of commentList; track item.id) {
+  <app-user-comments-top [comment]="item" />
+  }
 
   <div
     class="absolute top-[387px] left-[120px] h-[100px] flex flex-row gap-x-[15px]"

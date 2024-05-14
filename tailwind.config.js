@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import animations from "@midudev/tailwind-animations";
+
 module.exports = {
   content: ["./src/**/*.{html,ts}", "./node_modules/flowbite/**/*.js"],
   theme: {
@@ -29,5 +31,5 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [require("flowbite/plugin"), animations],
 };

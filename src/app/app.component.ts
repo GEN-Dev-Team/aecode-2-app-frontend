@@ -15,6 +15,7 @@ import { ProfileViewComponent } from './pages/profile-view/profile-view.componen
 import { BlogViewComponent } from './pages/blog-view/blog-view.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LogInComponent } from './components/log-in/log-in.component';
+import { LogIn } from './models/login';
 
 @Component({
   selector: 'app-root',
@@ -39,6 +40,9 @@ import { LogInComponent } from './components/log-in/log-in.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
+  isLogged = false;
+  LogIn!: LogIn;
+
   title = 'AECODE 2';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}

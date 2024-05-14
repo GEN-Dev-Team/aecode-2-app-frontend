@@ -1,6 +1,6 @@
 <nav class="bg-main-purple border-gray-200 dark:bg-gray-900">
   <div
-    class="flex flex-wrap items-center justify-between w-[1440px] mx-auto px-12"
+    class="flex flex-wrap items-center justify-between w-[1440px] h-[78px] mx-auto px-12"
   >
     <div class="flex flex-row gap-x-5">
       <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -89,10 +89,11 @@
           </li>
         </ul>
       </div>
+
       <div
         class="flex relative gap-x-5 items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
       >
-        @if(user) {
+        @if(logIn) {
         <button
           class="group flex flex-col items-center hover:bg-[#4E1EA5] py-4 w-36 gap-y-1 text-white"
         >
@@ -115,7 +116,7 @@
           />
           <div class="flex flex-row items-center gap-x-1">
             <span aria-label="user-menu-button" class="text-white">{{
-              user
+              logIn
             }}</span>
             <app-svg-caret-down class="size-4" fill="white" />
           </div>
@@ -123,7 +124,7 @@
         } @else {
         <a
           href="/log-in"
-          class="flex text-sm items-center text-white gap-x-3 rounded-full md:me-0 dark:focus:ring-gray-600"
+          class="px-5 flex text-sm items-center text-white gap-x-3 rounded-full md:me-0 dark:focus:ring-gray-600"
           id="user-menu-button"
         >
           <span>¿Ya tienes cuenta?</span>

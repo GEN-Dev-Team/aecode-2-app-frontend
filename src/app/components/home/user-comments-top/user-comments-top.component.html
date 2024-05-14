@@ -1,0 +1,14 @@
+<div
+  class="your-div-class absolute animate-zoom-in animate-duration-1000 top-[40px] left-[40px] h-[100px] flex flex-row gap-x-[15px]"
+>
+  <img
+    [src]="comment.user_profile_photo"
+    [alt]=""
+    class="size-[100px] rounded-full"
+  />
+  <div
+    class="home-bubble rounded-md bg-celeste-2 text-white text-base h-[44px] p-2 pt-2.5 mt-[15px] flex-nowrap w-fit"
+  >
+    {{ comment.user_comment }}
+  </div>
+</div>

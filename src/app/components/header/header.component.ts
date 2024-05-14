@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   SvgBlogComponent,
   SvgCoursesComponent,
@@ -13,6 +13,7 @@ import { RouterLink } from '@angular/router';
 import { SvgUnlogUserComponent } from '../icons/svg-unlog-user/svg-unlog-user.component';
 import { SvgCaretDownComponent } from '../icons/svg-caret-down/svg-caret-down.component';
 import { SvgCaretUpComponent } from '../icons/svg-caret-up/svg-caret-up.component';
+import { LogIn } from '../../models/login';
 
 @Component({
   selector: 'app-header',
@@ -35,5 +36,5 @@ import { SvgCaretUpComponent } from '../icons/svg-caret-up/svg-caret-up.componen
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  user = 'Lucia';
+  @Input() logIn!: LogIn;
 }

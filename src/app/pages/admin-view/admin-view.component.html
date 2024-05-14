@@ -1,6 +1,7 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-[1440px]">
   <div class="md:grid-cols-[1fr_3fr] flex flex-row bg-white">
     <app-side-bar (callTable)="getCallTable($event)" />
+
     <div class="p-4 w-full">
       @if (callTable == "UsersTable") {
       <app-user />} @else if(callTable=="RolesTable"){

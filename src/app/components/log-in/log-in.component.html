@@ -16,7 +16,10 @@
       <!--Agregamos condicionales para mostar el formulario de registro o inicio de sesión -->
       @if(callSignInCard == ""){
       <!--Primero tenemo el login, de este componente hijo sacaremos el valor de callSignInCard en caso querramos crear una cuenta nueva-->
-      <app-log-in-card (callingSignInCard)="getCallSignInCard($event)" />
+      <app-log-in-card
+        (userLogged)="getUserLogged($event)"
+        (callingSignInCard)="getCallSignInCard($event)"
+      />
       }
 
       <!--Si el valor de callSignInCard es TRUE, mostramos el formulario de registro o signIn-->
