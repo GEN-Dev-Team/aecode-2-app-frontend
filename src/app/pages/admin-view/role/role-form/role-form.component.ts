@@ -37,7 +37,7 @@ export class RoleFormComponent implements OnChanges, OnInit {
   ngOnChanges(): void {
     if (this.data) {
       this.roleForm.patchValue({
-        id: this.data.id,
+        id: this.data.id_role,
         role_name: this.data.role_name,
         role_description: this.data.role_description,
       });

@@ -25,7 +25,7 @@
     </tr>
   </thead>
   <tbody>
-    @for (item of roleList; track item.id) {
+    @for (item of roleList; track item.id_role) {
     <tr
       class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
     >
@@ -33,7 +33,7 @@
         scope="row"
         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
       >
-        {{ item.id }}
+        {{ item.id_role }}
       </th>
       <td class="px-6 py-4">{{ item.role_name }}</td>
       <td class="px-6 py-4">{{ item.role_description }}</td>
@@ -49,7 +49,7 @@
           <app-svg-edit />
         </button>
         <button
-          (click)="deleteRole(item.id!)"
+          (click)="deleteRole(item.id_role!)"
           type="button"
           class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3"
         >

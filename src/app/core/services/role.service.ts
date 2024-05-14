@@ -29,7 +29,7 @@ export class RoleService {
   }
 
   updateRole(role: Role) {
-    return this.http.put(`${this.apiurl}/${role.id}`, role);
+    return this.http.put(`${this.apiurl}/${role.id_role}`, role);
   }
 
   deleteRole(id: number): Observable<Role[]> {
