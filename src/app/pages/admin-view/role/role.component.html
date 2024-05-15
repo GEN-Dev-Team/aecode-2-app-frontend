@@ -1,5 +1,5 @@
 <div class="flex justify-end mb-4">
-  <app-button data-modal-target="role-modal" data-modal-toggle="role-modal">
+  <app-button type="button" (click)="openModel()">
     <span>Agregar registro</span>
   </app-button>
   <div
@@ -40,8 +40,6 @@
 
       <td class="flex items-center px-6 py-4">
         <button
-          data-modal-target="default-modal"
-          data-modal-toggle="default-modal"
           (click)="loadRole(item)"
           type="button"
           class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
@@ -60,3 +58,7 @@
     }
   </tbody>
 </table>
+
+<app-model [isOpen]="isModelOpen" (closeModel)="closeModel()">
+  <app-role-form (onCloseModel)="closeModel()" [data]="role"></app-role-form>
+</app-model>

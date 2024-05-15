@@ -31,21 +31,12 @@ export class AdminViewComponent {
   userList: User[] = [];
   user!: User;
   role!: Role;
-  constructor(private userService: UserServiceService) {}
 
   // Declarar variables para los eventos
-  callTable: string = 'RolesTable';
+  callTable: string = 'UsersTable';
 
   // Eventos para mostrar las tablas
   getCallTable(callUsersTableValue: string) {
     this.callTable = callUsersTableValue;
-  }
-
-  getUserData(user: User) {
-    this.user = user;
-  }
-
-  getRoleData(role: Role) {
-    this.role = role;
   }
 }

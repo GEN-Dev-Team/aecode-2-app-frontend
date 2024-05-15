@@ -5,6 +5,7 @@ import { SgvTrashComponent } from '../../../components/icons/sgv-trash/sgv-trash
 import { User } from '../../../models/user';
 import { UserServiceService } from '../../../core/services/user.service';
 import { SignInCardComponent } from '../../../components/log-in/sign-in-card/sign-in-card.component';
+import { ModelComponent } from '../../../components/model/model.component';
 
 @Component({
   selector: 'app-user',
@@ -14,13 +15,16 @@ import { SignInCardComponent } from '../../../components/log-in/sign-in-card/sig
     SvgEditComponent,
     SgvTrashComponent,
     SignInCardComponent,
+    ModelComponent,
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
 export class UserComponent implements OnInit {
+  isModelOpen = false;
   userList: User[] = [];
   user!: User;
+
   constructor(private userService: UserServiceService) {}
   ngOnInit(): void {
     this.getAllUsers();
@@ -44,21 +48,25 @@ export class UserComponent implements OnInit {
     this.userService.deleteUser(id).subscribe({
       next: (response) => {
         this.userList = response;
-        this.getAllUsers();
+
         console.log('User deleted successfully!');
       },
     });
-  }
-
-  updateUser(id: number, user: User) {
-    this.userService.updateUser(id, user).subscribe((response) => {
-      this.getAllUsers();
-      console.log('User updated successfully!');
-    });
+    this.getAllUsers();
   }
 
   loadUser(userData: User) {
     this.user = userData;
+    this.openModel();
     console.log(userData);
+  }
+
+  openModel() {
+    this.isModelOpen = true;
+  }
+
+  closeModel() {
+    this.isModelOpen = false;
+    this.getAllUsers();
   }
 }

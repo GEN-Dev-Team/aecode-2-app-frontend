@@ -5,6 +5,8 @@ import { SvgEditComponent } from '../../../components/icons/svg-edit/svg-edit.co
 import { SgvTrashComponent } from '../../../components/icons/sgv-trash/sgv-trash.component';
 import { ButtonComponent } from '../../../components/button/button.component';
 import { RoleFormComponent } from './role-form/role-form.component';
+import { ModelComponent } from '../../../components/model/model.component';
+import { RouteConfigLoadEnd } from '@angular/router';
 
 @Component({
   selector: 'app-role',
@@ -14,12 +16,13 @@ import { RoleFormComponent } from './role-form/role-form.component';
     SvgEditComponent,
     SgvTrashComponent,
     RoleFormComponent,
+    ModelComponent,
   ],
   templateUrl: './role.component.html',
   styleUrl: './role.component.css',
 })
 export class RoleComponent implements OnInit {
-  @Output() returnRole = new EventEmitter<Role>();
+  isModelOpen = false;
   roleList: Role[] = [];
   role!: Role;
 
@@ -32,7 +35,8 @@ export class RoleComponent implements OnInit {
   }
 
   loadRole(roleData: Role) {
-    this.returnRole.emit(roleData);
+    this.role = roleData;
+    this.openModel();
   }
 
   getAllRoles() {
@@ -53,5 +57,14 @@ export class RoleComponent implements OnInit {
     this.roleService.deleteRole(id).subscribe((response) => {
       console.log('Role deleted successfully!');
     });
+  }
+
+  openModel() {
+    this.isModelOpen = true;
+  }
+
+  closeModel() {
+    this.isModelOpen = false;
+    this.getAllRoles();
   }
 }

@@ -4,8 +4,7 @@
 
     <div class="p-4 w-full">
       @if (callTable == "UsersTable") {
-      <app-user />} @else if(callTable=="RolesTable"){
-      <app-role (returnRole)="getRoleData($event)" />}
+      <app-user />} @else if(callTable=="RolesTable"){ <app-role />}
     </div>
   </div>
 </div>

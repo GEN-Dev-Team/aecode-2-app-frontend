@@ -1,4 +1,11 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { Role } from '../../../../models/role';
 import {
   FormBuilder,
@@ -17,6 +24,7 @@ import { RoleService } from '../../../../core/services/role.service';
   styleUrl: './role-form.component.css',
 })
 export class RoleFormComponent implements OnChanges, OnInit {
+  @Output() onCloseModel = new EventEmitter<boolean>();
   @Input() data: Role | null = null;
   roleList: Role[] = [];
   Role!: Role;
@@ -24,7 +32,7 @@ export class RoleFormComponent implements OnChanges, OnInit {
 
   constructor(private fb: FormBuilder, private roleService: RoleService) {
     this.roleForm = this.fb.group({
-      id: new FormControl('', [Validators.required]),
+      id_role: new FormControl('', [Validators.required]),
       role_name: new FormControl('', [Validators.required]),
       role_description: new FormControl('', [Validators.required]),
     });
@@ -37,7 +45,7 @@ export class RoleFormComponent implements OnChanges, OnInit {
   ngOnChanges(): void {
     if (this.data) {
       this.roleForm.patchValue({
-        id: this.data.id_role,
+        id_role: this.data.id_role,
         role_name: this.data.role_name,
         role_description: this.data.role_description,
       });
@@ -46,15 +54,18 @@ export class RoleFormComponent implements OnChanges, OnInit {
 
   onSubmit() {
     if (this.roleForm.valid) {
+      console.log(this.data);
       if (this.data) {
         this.roleService.updateRole(this.roleForm.value).subscribe({
           next: (response) => {
+            this.resetForm();
             console.log('Role updated successfully!');
           },
         });
       } else {
         this.roleService.createRole(this.roleForm.value).subscribe({
           next: (response) => {
+            this.resetForm();
             console.log('Role created successfully!');
           },
         });
@@ -80,5 +91,14 @@ export class RoleFormComponent implements OnChanges, OnInit {
         console.log(response);
       },
     });
+  }
+
+  onClose() {
+    this.onCloseModel.emit(false);
+  }
+
+  resetForm() {
+    this.roleForm.reset();
+    this.onClose();
   }
 }
