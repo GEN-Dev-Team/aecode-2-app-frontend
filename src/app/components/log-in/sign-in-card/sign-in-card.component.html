@@ -22,25 +22,7 @@
         <div class="form-error text-red-700">Complete el campo</div>
         }
       </div>
-      <div>
-        <label
-          for="username"
-          class="block mb-1 text-[10px] font-medium text-gray-900 dark:text-white"
-          >Nombre de usuario</label
-        >
-        <input
-          type="text"
-          id="username"
-          formControlName="username"
-          class="form-control bg-transparent border text-gray-900 text-[10px] rounded-lg block w-full p-1.5 placeholder:text-main-purple placeholder:text-opacity-50 border-main-purple focus:ring-main-purple focus:border-main-purple"
-          placeholder="Ingresar nombre de usuario"
-          required
-        />
-        @if(userForm.get('fullname')?.hasError('required') &&
-        userForm.get('fullname')?.touched){
-        <div class="form-error text-red-700">Complete el campo</div>
-        }
-      </div>
+
       <div>
         <label
           for="profile_Gender"
@@ -55,10 +37,10 @@
           <option class="bg-[#F0EFFF] text-main-purple" selected>
             Ingresar sexo
           </option>
-          <option class="bg-[#F0EFFF] text-main-purple" value="0">
+          <option class="bg-[#F0EFFF] text-main-purple" value="Masculino">
             Masculino
           </option>
-          <option class="bg-[#F0EFFF] text-main-purple" value="1">
+          <option class="bg-[#F0EFFF] text-main-purple" value="Femenino">
             Femenino
           </option>
         </select>
@@ -204,6 +186,13 @@
         class="bg-main-purple hover:opacity-95 text-white border border-main-purple text-[10px] rounded-lg focus:border-white block w-full p-1.5"
       >
         Registrar
+      </button>
+      <button
+        type="button"
+        (click)="onClose()"
+        class="bg-main-purple mt-5 hover:opacity-95 text-white border border-main-purple text-[10px] rounded-lg focus:border-white block w-full p-1.5"
+      >
+        Cancelar
       </button>
     </div>
     <div>

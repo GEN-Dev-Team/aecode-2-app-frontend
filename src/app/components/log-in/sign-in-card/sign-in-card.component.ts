@@ -1,4 +1,11 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { SvgAppleComponent } from '../../icons/svg-apple/svg-apple.component';
 import { SvgGoogleComponent } from '../../icons/svg-google/svg-google.component';
 import { SvgViewPasswordComponent } from '../../icons/svg-view-password/svg-view-password.component';
@@ -29,6 +36,7 @@ import { Role } from '../../../models/role';
   styleUrl: './sign-in-card.component.css',
 })
 export class SignInCardComponent implements OnChanges, OnInit {
+  @Output() onCloseModel = new EventEmitter<boolean>();
   @Input() data: User | null = null;
   roleList: Role[] = [];
   Role!: Role;
@@ -40,9 +48,8 @@ export class SignInCardComponent implements OnChanges, OnInit {
     private roleService: RoleService
   ) {
     this.userForm = this.fb.group({
-      id_profile: new FormControl('', [Validators.required]),
+      id_profile: new FormControl(0),
       profile_Fullname: new FormControl('', [Validators.required]),
-      username: new FormControl('', [Validators.required]),
       profile_Gender: new FormControl('', [Validators.required]),
       profile_email: new FormControl('', [
         Validators.required,
@@ -59,11 +66,11 @@ export class SignInCardComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(): void {
+    console.log(this.data);
     if (this.data) {
       this.userForm.patchValue({
-        id: this.data.id,
+        id_profile: this.data.id_profile,
         profile_Fullname: this.data.profile_Fullname,
-        username: this.data.username,
         profile_Gender: this.data.profile_Gender,
         profile_email: this.data.profile_email,
         profile_password: this.data.profile_password,
@@ -74,23 +81,35 @@ export class SignInCardComponent implements OnChanges, OnInit {
   }
 
   onSubmit() {
+    //console.log(this.userForm.value);
+    //console.log(this.userForm.value.role);
+    this.getRole(this.userForm.value.role);
+    //console.log(this.Role);
+    this.userForm.patchValue({
+      role: this.Role,
+    });
+
     if (this.userForm.valid) {
       if (this.data) {
-        this.userService
-          .updateUser(this.data.id as number, this.userForm.value)
-          .subscribe({
-            next: (response) => {
-              console.log('User updated successfully!');
-            },
-          });
+        this.userService.updateUser(this.userForm.value).subscribe({
+          next: (response) => {
+            this.resetForm();
+            console.log('User updated successfully!');
+          },
+        });
       } else {
+        console.log(this.userForm.value);
+
         this.userService.createUser(this.userForm.value).subscribe({
           next: (response) => {
+            this.resetForm();
             console.log('User created successfully!');
+            console.log(this.userForm.value);
           },
         });
       }
     } else {
+      console.log(this.userForm.valid);
       this.userForm.markAllAsTouched();
     }
   }
@@ -99,7 +118,6 @@ export class SignInCardComponent implements OnChanges, OnInit {
     this.roleService.getAllRoles().subscribe({
       next: (response) => {
         this.roleList = response;
-        console.log(response);
       },
     });
   }
@@ -108,8 +126,16 @@ export class SignInCardComponent implements OnChanges, OnInit {
     this.roleService.getRole(id).subscribe({
       next: (response) => {
         this.Role = response;
-        console.log(response);
       },
     });
+  }
+
+  onClose() {
+    this.onCloseModel.emit(false);
+  }
+
+  resetForm() {
+    this.userForm.reset();
+    this.onClose();
   }
 }
