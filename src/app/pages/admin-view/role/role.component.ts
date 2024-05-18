@@ -46,13 +46,6 @@ export class RoleComponent implements OnInit {
     });
   }
 
-  createRole(role: Role) {
-    this.roleService.createRole(role).subscribe((response) => {
-      console.log(role);
-      console.log('Role created successfully!');
-    });
-  }
-
   deleteRole(id: number) {
     this.roleService.deleteRole(id).subscribe((response) => {
       console.log('Role deleted successfully!');

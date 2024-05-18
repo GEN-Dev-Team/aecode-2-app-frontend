@@ -6,6 +6,7 @@ import { User } from '../../../models/user';
 import { UserServiceService } from '../../../core/services/user.service';
 import { SignInCardComponent } from '../../../components/log-in/sign-in-card/sign-in-card.component';
 import { ModelComponent } from '../../../components/model/model.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user',
@@ -24,8 +25,12 @@ export class UserComponent implements OnInit {
   isModelOpen = false;
   userList: User[] = [];
   user!: User;
+  editUser = false;
 
-  constructor(private userService: UserServiceService) {}
+  constructor(
+    private userService: UserServiceService,
+    private toastService: ToastrService
+  ) {}
   ngOnInit(): void {
     this.getAllUsers();
   }
@@ -48,14 +53,14 @@ export class UserComponent implements OnInit {
     this.userService.deleteUser(id).subscribe({
       next: (response) => {
         this.userList = response;
-
-        console.log('User deleted successfully!');
+        this.toastService.success('User deleted successfully!');
+        this.getAllUsers();
       },
     });
-    this.getAllUsers();
   }
 
   loadUser(userData: User) {
+    this.editUser = true;
     this.user = userData;
     this.openModel();
     console.log(userData);
@@ -68,5 +73,6 @@ export class UserComponent implements OnInit {
   closeModel() {
     this.isModelOpen = false;
     this.getAllUsers();
+    this.editUser = false;
   }
 }

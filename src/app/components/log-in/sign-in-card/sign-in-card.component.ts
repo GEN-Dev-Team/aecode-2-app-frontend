@@ -21,6 +21,8 @@ import { UserServiceService } from '../../../core/services/user.service';
 import { User } from '../../../models/user';
 import { RoleService } from '../../../core/services/role.service';
 import { Role } from '../../../models/role';
+import { ToastrService } from 'ngx-toastr';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-sign-in-card',
@@ -38,6 +40,7 @@ import { Role } from '../../../models/role';
 export class SignInCardComponent implements OnChanges, OnInit {
   @Output() onCloseModel = new EventEmitter<boolean>();
   @Input() data: User | null = null;
+  @Input() editUser!: boolean;
   roleList: Role[] = [];
   Role!: Role;
   userForm: FormGroup;
@@ -45,7 +48,8 @@ export class SignInCardComponent implements OnChanges, OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserServiceService,
-    private roleService: RoleService
+    private roleService: RoleService,
+    private toastServie: ToastrService
   ) {
     this.userForm = this.fb.group({
       id_profile: new FormControl(0),
@@ -57,7 +61,7 @@ export class SignInCardComponent implements OnChanges, OnInit {
       ]),
       profile_password: new FormControl('', [Validators.required]),
       profile_Birthdate: new FormControl('', [Validators.required]),
-      role: new FormControl('', [Validators.required]),
+      role: new FormControl(''),
     });
   }
 
@@ -66,7 +70,6 @@ export class SignInCardComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges(): void {
-    console.log(this.data);
     if (this.data) {
       this.userForm.patchValue({
         id_profile: this.data.id_profile,
@@ -81,35 +84,46 @@ export class SignInCardComponent implements OnChanges, OnInit {
   }
 
   onSubmit() {
-    //console.log(this.userForm.value);
-    //console.log(this.userForm.value.role);
-    this.getRole(this.userForm.value.role);
-    //console.log(this.Role);
-    this.userForm.patchValue({
-      role: this.Role,
-    });
+    let roledId;
+
+    if (this.editUser) {
+      roledId = this.userForm.value.role;
+    } else {
+      roledId = 1;
+    }
 
     if (this.userForm.valid) {
-      if (this.data) {
-        this.userService.updateUser(this.userForm.value).subscribe({
+      this.roleService
+        .getRole(roledId)
+        .pipe(
+          switchMap((role) => {
+            this.userForm.patchValue({ role });
+            return this.data
+              ? this.userService.updateUser(this.userForm.value)
+              : this.userService.createUser(this.userForm.value);
+          })
+        )
+        .subscribe({
           next: (response) => {
+            this.toastServie.success(
+              this.data
+                ? 'User updated successfully!'
+                : 'User created successfully!'
+            );
             this.resetForm();
-            console.log('User updated successfully!');
+          },
+          error: (error) => {
+            if (error.status === 400) {
+              this.toastServie.error('El correo electronico ya esta en uso.');
+            } else if (error.status === 201) {
+              this.toastServie.success('User updated successfully!');
+              this.resetForm();
+            } else {
+              this.toastServie.error('Error de registro. Intente nuevamente.');
+            }
           },
         });
-      } else {
-        console.log(this.userForm.value);
-
-        this.userService.createUser(this.userForm.value).subscribe({
-          next: (response) => {
-            this.resetForm();
-            console.log('User created successfully!');
-            console.log(this.userForm.value);
-          },
-        });
-      }
     } else {
-      console.log(this.userForm.valid);
       this.userForm.markAllAsTouched();
     }
   }
@@ -118,14 +132,6 @@ export class SignInCardComponent implements OnChanges, OnInit {
     this.roleService.getAllRoles().subscribe({
       next: (response) => {
         this.roleList = response;
-      },
-    });
-  }
-
-  getRole(id: number) {
-    this.roleService.getRole(id).subscribe({
-      next: (response) => {
-        this.Role = response;
       },
     });
   }

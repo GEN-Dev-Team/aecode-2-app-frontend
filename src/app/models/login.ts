@@ -1,6 +1,5 @@
 export interface LogIn {
-  id: number;
-  email: string;
-  password: string;
-  login_response: boolean;
+  id_profile?: number;
+  profile_email: string;
+  profile_password: string;
 }

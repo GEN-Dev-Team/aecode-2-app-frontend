@@ -15,7 +15,7 @@ import { ProfileViewComponent } from './pages/profile-view/profile-view.componen
 import { BlogViewComponent } from './pages/blog-view/blog-view.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LogInComponent } from './components/log-in/log-in.component';
-import { LogIn } from './models/login';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -41,7 +41,13 @@ import { LogIn } from './models/login';
 })
 export class AppComponent implements OnInit {
   isLogged = false;
-  LogIn!: LogIn;
+  userLogged!: User;
+
+  getUserLogged(userLogged: User) {
+    this.userLogged = userLogged;
+    this.isLogged = true;
+    console.log('User logged app component');
+  }
 
   title = 'AECODE 2';
 

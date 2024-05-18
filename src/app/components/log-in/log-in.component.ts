@@ -13,11 +13,9 @@ import { LogIn } from '../../models/login';
   styleUrl: './log-in.component.css',
 })
 export class LogInComponent implements OnInit {
-  isLogged = false;
-  userLogin: LogIn | undefined;
+  @Output() userLoggedData = new EventEmitter<User>();
+  isLogged = true;
   callSignInCard: string = '';
-
-  @Output() userLogged = new EventEmitter<LogIn>();
 
   ngOnInit(): void {}
 
@@ -28,9 +26,8 @@ export class LogInComponent implements OnInit {
     this.callSignInCard = callSignInCardValue;
   }
 
-  getUserLogged(userLogin: LogIn) {
-    this.isLogged = true;
-    this.userLogin = userLogin;
-    console.log(this.userLogged);
+  getUserLogged(userLogin: User) {
+    this.userLoggedData.emit(userLogin);
+    console.log('User logged log in', userLogin);
   }
 }

@@ -13,7 +13,7 @@ import { RouterLink } from '@angular/router';
 import { SvgUnlogUserComponent } from '../icons/svg-unlog-user/svg-unlog-user.component';
 import { SvgCaretDownComponent } from '../icons/svg-caret-down/svg-caret-down.component';
 import { SvgCaretUpComponent } from '../icons/svg-caret-up/svg-caret-up.component';
-import { LogIn } from '../../models/login';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-header',
@@ -36,5 +36,5 @@ import { LogIn } from '../../models/login';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  @Input() logIn!: LogIn;
+  @Input() userLogged!: User;
 }

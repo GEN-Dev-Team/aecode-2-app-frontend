@@ -1,6 +1,10 @@
-<app-header [logIn]="LogIn" />
+<app-header [userLogged]="userLogged" />
 <div class="w-[1440px] mx-auto">
+  @if (isLogged) {
+  <app-log-in (userLoggedData)="getUserLogged($event)" />
+  } @else {
   <router-outlet></router-outlet>
+  }
 </div>
 <!--<app-message />-->
 <app-footer />

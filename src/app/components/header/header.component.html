@@ -93,7 +93,7 @@
       <div
         class="flex relative gap-x-5 items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
       >
-        @if(logIn) {
+        @if(userLogged) {
         <button
           class="group flex flex-col items-center hover:bg-[#4E1EA5] py-4 w-36 gap-y-1 text-white"
         >
@@ -116,7 +116,7 @@
           />
           <div class="flex flex-row items-center gap-x-1">
             <span aria-label="user-menu-button" class="text-white">{{
-              logIn
+              userLogged.profile_Fullname
             }}</span>
             <app-svg-caret-down class="size-4" fill="white" />
           </div>

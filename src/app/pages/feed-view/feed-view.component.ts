@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
+import { ComingSoonPageComponent } from '../coming-soon-page/coming-soon-page.component';
 
 @Component({
   selector: 'app-feed-view',
   standalone: true,
-  imports: [PageNotFoundComponent],
+  imports: [ComingSoonPageComponent],
   templateUrl: './feed-view.component.html',
   styleUrl: './feed-view.component.css',
 })

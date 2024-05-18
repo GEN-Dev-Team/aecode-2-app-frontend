@@ -54,7 +54,6 @@ export class RoleFormComponent implements OnChanges, OnInit {
 
   onSubmit() {
     if (this.roleForm.valid) {
-      console.log(this.data);
       if (this.data) {
         this.roleService.updateRole(this.roleForm.value).subscribe({
           next: (response) => {
@@ -79,7 +78,6 @@ export class RoleFormComponent implements OnChanges, OnInit {
     this.roleService.getAllRoles().subscribe({
       next: (response) => {
         this.roleList = response;
-        console.log(response);
       },
     });
   }
@@ -88,7 +86,6 @@ export class RoleFormComponent implements OnChanges, OnInit {
     this.roleService.getRole(id).subscribe({
       next: (response) => {
         this.Role = response;
-        console.log(response);
       },
     });
   }

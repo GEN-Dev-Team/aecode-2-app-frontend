@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../models/user';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 const base_url = environment.base;
@@ -29,7 +29,7 @@ export class UserServiceService {
   }
 
   updateUser(user: User) {
-    return this.http.put<User>(this.apiurl, user);
+    return this.http.put<User>(`${this.apiurl}`, user);
   }
 
   deleteUser(id: number): Observable<User[]> {
