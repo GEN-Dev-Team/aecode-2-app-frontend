@@ -55,9 +55,11 @@ export class AppComponent implements OnInit {
 
   title = 'AECODE 2';
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) initFlowbite();
+  }
 
   unLogged(isLogged: boolean) {
     this.isLogged = isLogged;

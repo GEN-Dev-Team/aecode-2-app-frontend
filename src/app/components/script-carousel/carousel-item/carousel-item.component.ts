@@ -22,5 +22,5 @@ import { SvgUnbookmarkComponent } from '../../icons/svg-unbookmark/svg-unbookmar
   styleUrl: './carousel-item.component.css',
 })
 export class CarouselItemComponent {
-  @Input() script: Script | undefined;
+  @Input() script!: Script;
 }

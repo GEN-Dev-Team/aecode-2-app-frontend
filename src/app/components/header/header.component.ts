@@ -27,6 +27,7 @@ import { User } from '../../models/user';
 import { AuthService } from '../../core/services/auth.service';
 import { DOCUMENT } from '@angular/common';
 import { LocalStorageService } from '../../core/services/local-storage.service';
+import { SvgOffersComponent } from '../icons/svg-offers/svg-offers.component';
 
 @Component({
   selector: 'app-header',
@@ -44,6 +45,7 @@ import { LocalStorageService } from '../../core/services/local-storage.service';
     SvgUnlogUserComponent,
     SvgCaretDownComponent,
     SvgCaretUpComponent,
+    SvgOffersComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',

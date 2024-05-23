@@ -7,7 +7,7 @@
   <div class="relative w-[708px] h-[391px] overflow-hidden mx-auto rounded-lg">
     <!-- Item 1 -->
     @for (script of scriptList; track script.script_id) {
-    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+    <div class="duration-700 ease-in-out" data-carousel-item>
       <app-carousel-item [script]="script" />
     </div>
     }
