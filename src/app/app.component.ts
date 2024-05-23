@@ -46,14 +46,20 @@ export class AppComponent implements OnInit {
   getUserLogged(userLogged: User) {
     this.userLogged = userLogged;
     this.isLogged = true;
-    console.log('User logged app component');
+    console.log('User app component', this.userLogged);
+  }
+
+  isUserLogged(isLogged: boolean) {
+    this.isLogged = isLogged;
   }
 
   title = 'AECODE 2';
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor() {}
 
-  ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) initFlowbite();
+  ngOnInit() {}
+
+  unLogged(isLogged: boolean) {
+    this.isLogged = isLogged;
   }
 }

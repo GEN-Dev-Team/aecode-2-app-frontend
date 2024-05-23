@@ -3,7 +3,6 @@ import { MainContainerComponent } from '../layout';
 import { SignInCardComponent } from './sign-in-card/sign-in-card.component';
 import { LogInCardComponent } from './log-in-card/log-in-card.component';
 import { User } from '../../models/user';
-import { LogIn } from '../../models/login';
 
 @Component({
   selector: 'app-log-in',
@@ -14,8 +13,10 @@ import { LogIn } from '../../models/login';
 })
 export class LogInComponent implements OnInit {
   @Output() userLoggedData = new EventEmitter<User>();
-  isLogged = true;
+  @Output() userLogged = new EventEmitter<boolean>();
   callSignInCard: string = '';
+
+  user!: User;
 
   ngOnInit(): void {}
 
@@ -28,6 +29,7 @@ export class LogInComponent implements OnInit {
 
   getUserLogged(userLogin: User) {
     this.userLoggedData.emit(userLogin);
-    console.log('User logged log in', userLogin);
+    this.userLogged.emit(true);
+    console.log('User LogIn component', userLogin);
   }
 }

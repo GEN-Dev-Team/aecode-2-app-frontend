@@ -62,10 +62,10 @@
           </li>
           <li class="group hover:bg-[#4E1EA5] py-4 w-24">
             <a
-              routerLink="/profile"
+              routerLink="/offers"
               class="flex flex-col items-center gap-y-1 text-white"
             >
-              <app-svg-profile class="size-5" />
+              <app-svg-profile class="size-5 fill-white" />
               <span>Oferta</span>
             </a>
           </li>
@@ -115,7 +115,7 @@
             alt="user photo"
           />
           <div class="flex flex-row items-center gap-x-1">
-            <span aria-label="user-menu-button" class="text-white">{{
+            <span aria-label="user-menu-button" class="text-white truncate">{{
               userLogged.profile_Fullname
             }}</span>
             <app-svg-caret-down class="size-4" fill="white" />
@@ -123,9 +123,8 @@
         </button>
         } @else {
         <a
-          href="/log-in"
+          routerLink="/login"
           class="px-5 flex text-sm items-center text-white gap-x-3 rounded-full md:me-0 dark:focus:ring-gray-600"
-          id="user-menu-button"
         >
           <span>¿Ya tienes cuenta?</span>
           <span class="text-white rounded-md border border-white px-2 py-1"
@@ -152,28 +151,28 @@
               <a
                 href="#"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >Dashboard</a
+                >Configuración y privacidad</a
               >
             </li>
             <li>
               <a
                 href="#"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >Settings</a
+                >Ayuda y soporte</a
               >
             </li>
             <li>
               <a
                 href="#"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >Earnings</a
+                >Administrar y gestionar</a
               >
             </li>
             <li>
               <a
-                href="#"
+                (click)="signOut()"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >Sign out</a
+                >Cerrar sesión</a
               >
             </li>
           </ul>

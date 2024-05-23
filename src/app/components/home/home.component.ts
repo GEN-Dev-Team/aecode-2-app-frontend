@@ -25,11 +25,5 @@ export class HomeComponent {
       user_comment: 'Genial plataforma',
       user_profile_photo: 'https://github.com/Sthepen-EA.png',
     },
-    {
-      id: 1,
-      user_id: 2,
-      user_comment: 'Me encanta!',
-      user_profile_photo: 'https://github.com/Sthepen-EA.png',
-    },
   ];
 }

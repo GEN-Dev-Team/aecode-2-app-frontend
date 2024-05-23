@@ -1,1 +1,125 @@
-<app-coming-soon-page />
+<div class="p-[50px] bg-gris-2">
+  <div class="grid-cols-[1fr_3fr] flex flex-row space-x-9">
+    <div class="space-y-5">
+      <app-side-container class="space-y-[25px] flex flex-col">
+        @for (item of optionsList; track item.id) {
+        <div
+          class="w-[260px] group ms-3 h-10 font-[Ruberoid-medium] flex items-center py-[10px] px-[18px] space-x-[15px] rounded-md text-gris hover:bg-azul-1 hover:bg-opacity-[0.08] hover:text-main-purple"
+        >
+          @switch (item.id) { @case (1) {<app-svg-foryou
+            class="size-5 fill-gris group-hover:fill-main-purple"
+          />} @case (2) {<app-svg-world
+            class="size-5 stroke-gris group-hover:stroke-main-purple"
+          />} @case (3) {<app-svg-profile
+            class="size-5 fill-gris group-hover:fill-main-purple"
+          />} @case (4) {<app-svg-users
+            class="size-5 fill-gris group-hover:fill-main-purple"
+          />} @case (5) {<app-svg-building
+            class="size-5 fill-gris group-hover:fill-main-purple"
+          />} @case (6) {<app-svg-bookmark
+            class="size-5 fill-gris group-hover:fill-main-purple"
+          />} @case (7) {<app-svg-palete
+            class="size-5 fill-gris group-hover:fill-main-purple"
+          />}}
+          <span>{{ item.name }}</span>
+        </div>
+        }
+
+        <app-button class="ms-[15px]">+ Ver más</app-button>
+      </app-side-container>
+
+      <app-side-container
+        class="space-y-[20px] flex flex-col font-[ruberoid-medium]"
+      >
+        <div
+          class="flex flex-row w-[220px] mb-[10px] h-[30px] space-x-[15px] mt-4 border-b-[1px] text-nowrap mx-[30px]"
+        >
+          <span>MIS GRUPOS</span>
+          <span class="text-main-purple">EDITAR LISTA</span>
+        </div>
+
+        @for (item of userGroupList; track item.id) {
+        <a
+          href="#"
+          class="w-[220px] mx-[30px] px-[7px] font-[Ruberoid-medium] py-[10px] space-x-[15px] rounded-md border-[1px] flex flex-row"
+        >
+          <img
+            src="https://static.wixstatic.com/media/59f1f5_6315c033a2904604b59b4ad40ba2809c~mv2.png/v1/fill/w_998,h_1170,al_c/59f1f5_6315c033a2904604b59b4ad40ba2809c~mv2.png"
+            alt=""
+            class="size-[50px] rounded-full"
+          />
+          <div class="line-clamp-2 w-[141px py-[5px]">
+            {{ item.name }}
+          </div>
+        </a>
+        }
+
+        <div class="ms-[30px] py-[10px] text-main-purple">MOSTRAR MÁS (10)</div>
+      </app-side-container>
+
+      <app-side-container
+        class="space-y-[20px] flex flex-col font-[ruberoid-medium]"
+      >
+        <div
+          class="flex flex-row w-[220px] mb-[10px] h-[30px] space-x-[15px] mt-4 border-b-[1px] text-nowrap mx-[30px]"
+        >
+          <span>SIGUIENDO HASHTAGS</span>
+        </div>
+
+        <div
+          class="mx-[30px] gap-x-[5px] flex flex-wrap w-[224px] h-auto gap-y-[30px]"
+        >
+          @for (item of hashtagList; track item.id_hashtag) {
+          <app-hashtag-container-element>
+            #{{ item.hashtag_name }}
+          </app-hashtag-container-element>
+          }
+        </div>
+      </app-side-container>
+
+      <app-side-container
+        class="space-y-[20px] flex flex-col font-[ruberoid-medium]"
+      >
+        <div
+          class="flex flex-row w-[220px] mb-[10px] h-[30px] space-x-[15px] mt-4 border-b-[1px] text-nowrap mx-[30px]"
+        >
+          <span>TE PUEDE INTERESAR</span>
+        </div>
+
+        @for (item of groupList; track item.id) {
+        <a
+          href="#"
+          class="w-[240px] h-[60px] mx-[20px] font-[Ruberoid-medium] items-center gap-y-[20px] gap-x-[20px] rounded-md flex flex-row"
+        >
+          <img [src]="[item.img]" alt="" class="w-[71px] h-[60px]" />
+          <div class="w-[149px] flex flex-col space-y-[5px]">
+            <span class="line-clamp-2">{{ item.name }}</span>
+            <span class="font-[plusjakartasans-regular] text-[10px]"
+              >{{ item.views }} Vistas</span
+            >
+          </div>
+        </a>
+        }
+      </app-side-container>
+    </div>
+    <div class="w-[1020px]">
+      <app-post-creator-container />
+
+      <div
+        class="py-[30px] flex flex-row gap-x-[27px] items-center font-[Ruberoid-medium]"
+      >
+        <hr class="w-[370px] border-t-[2px]" />
+        <span class="flex flex-row gap-x-2 text-nowrap items-center text-xs"
+          >ORDENAR POR:
+          <span
+            class="text-main-purple cursor-pointer flex flex-row items-center gap-x-3"
+            >RECIENTES <app-svg-caret-down class="size-3 fill-main-purple" />
+          </span>
+        </span>
+        <hr class="w-[370px] border-t-[2px]" />
+      </div>
+
+      <app-post-container></app-post-container>
+    </div>
+  </div>
+</div>

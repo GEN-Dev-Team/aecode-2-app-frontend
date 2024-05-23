@@ -1,0 +1,56 @@
+<div
+  class="post-creator-container w-full bg-white py-[20px] px-[30px] {{ class }}"
+>
+  <div class="gap-y-5 flex flex-col">
+    <div class="flex flex-row gap-x-[10px] items-center">
+      <img
+        src="https://github.com/Sthepen-EA.png"
+        alt=""
+        class="rounded-full size-10"
+      />
+      <span class="font-[plusjakartasans-semibold] text-sm">Publicar</span>
+    </div>
+
+    <hr class="w-full -mt-2" />
+
+    <div
+      class="flex flex-row justify-between text-gris-1 font-[plusjakartasans-regular]"
+    >
+      <Input
+        type="text"
+        placeholder="¿Que estas pensando?"
+        class="text-base border-none placeholder:opacity-20 text-black w-[750px] h-10 max-h-40"
+      />
+
+      <div class="flex flex-row space-x-[10px]">
+        <app-post-creator-element>
+          <app-svg-codes class="size-[19px] group-hover:fill-white" />
+        </app-post-creator-element>
+
+        <app-post-creator-element>
+          <app-svg-files
+            class="size-[19px] fill-gris group-hover:stroke-white group-hover:fill-main-purple"
+          />
+        </app-post-creator-element>
+
+        <app-post-creator-element>
+          <app-svg-pictures
+            class="size-[19px] stroke-gris group-hover:stroke-white group-hover:fill-main-purple"
+          />
+        </app-post-creator-element>
+
+        <app-post-creator-element>
+          <app-svg-videos
+            class="size-[19px] stroke-gris fill-none group-hover:stroke-white group-hover:fill-main-purple"
+          />
+        </app-post-creator-element>
+
+        <app-post-creator-element>
+          <app-svg-send
+            class="size-[19px] stroke-gris group-hover:stroke-white"
+          />
+        </app-post-creator-element>
+      </div>
+    </div>
+  </div>
+</div>

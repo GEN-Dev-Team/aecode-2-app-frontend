@@ -1,4 +1,6 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+declare var google: any;
+
+import { Component, Output, EventEmitter, OnInit, inject } from '@angular/core';
 import { SvgGoogleComponent } from '../../icons/svg-google/svg-google.component';
 import { SvgAppleComponent } from '../../icons/svg-apple/svg-apple.component';
 import { SvgViewPasswordComponent } from '../../icons/svg-view-password/svg-view-password.component';
@@ -15,8 +17,8 @@ import { User } from '../../../models/user';
 import { LogIn } from '../../../models/login';
 import { LoginService } from '../../../core/services/login.service';
 import { ToastrService } from 'ngx-toastr';
-import { switchMap } from 'rxjs';
-import { UserServiceService } from '../../../core/services/user.service';
+import { Router } from '@angular/router';
+import { LocalStorageService } from '../../../core/services/local-storage.service';
 
 @Component({
   selector: 'app-log-in-card',
@@ -33,21 +35,21 @@ import { UserServiceService } from '../../../core/services/user.service';
   templateUrl: './log-in-card.component.html',
   styleUrl: './log-in-card.component.css',
 })
-export class LogInCardComponent {
+export class LogInCardComponent implements OnInit {
+  private router = inject(Router);
   // Para enviar un evento al componente padre (log-in) usamos Output y EventEmitter de angular Core
   @Output() callingSignInCard = new EventEmitter<string>();
   @Output() userLogged = new EventEmitter<User>();
 
   loginForm!: FormGroup;
-  isLogged = false;
   userLogin!: LogIn;
   user!: any;
 
   constructor(
     fb: FormBuilder,
     private logInService: LoginService,
-    private userService: UserServiceService,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private localStorage: LocalStorageService
   ) {
     this.loginForm = fb.group({
       id_email: new FormControl(''),
@@ -56,21 +58,49 @@ export class LogInCardComponent {
     });
   }
 
+  // Inicio de sesion con google
+  ngOnInit(): void {
+    google.accounts.id.initialize({
+      client_id:
+        '968243235984-1gadvmd2p7scrg685eoip19qnfv011vj.apps.googleusercontent.com',
+      callback: (response: any) => {
+        this.handleLogin(response);
+      },
+    });
+    google.accounts.id.renderButton(document.getElementById('google-button'), {
+      size: 'large',
+      type: 'icon',
+      shape: 'circle',
+    });
+  }
+
+  private decodeToken(token: string) {
+    return JSON.parse(atob(token.split('.')[1]));
+  }
+
+  handleLogin(response: any) {
+    if (response) {
+      //Decodificamos el token
+      const payload = this.decodeToken(response.credential);
+      //Almacenamos en la sesion, session storage
+      sessionStorage.setItem('loggedInUser', JSON.stringify(payload));
+      //Navegamos a la ruta principal
+      this.router.navigate(['/scripts']);
+    }
+  }
+
   onSubmit() {
     if (this.loginForm.valid) {
       this.userLogin = this.loginForm.value;
-      console.log(this.userLogin);
 
       this.logInService.logUser(this.userLogin).subscribe({
         next: (response) => {
           this.user = response;
-          console.log('Estos son los datos del usuario:', response);
-          console.log('Estos son los datos del usuario:', this.user);
+          console.log(this.user);
+          this.localStorage.setItem('User Logged', this.user);
           this.userLoggedEvent();
         },
         error: (error) => {
-          console.log(error);
-          console.log(error.message);
           this.toastService.error(error);
         },
       });
@@ -79,7 +109,8 @@ export class LogInCardComponent {
 
   userLoggedEvent() {
     this.userLogged.emit(this.user);
-    console.log('User Logged activado');
+    this.router.navigate(['/scripts']);
+    console.log('User LogIn Card component', this.user);
   }
 
   // Función usada en el html para obtener el contenido del evento que se enviará al padre

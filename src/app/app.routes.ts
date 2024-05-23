@@ -8,10 +8,11 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { LogInComponent } from './components/log-in/log-in.component';
 import { SignInCardComponent } from './components/log-in/sign-in-card/sign-in-card.component';
 import { AdminViewComponent } from './pages/admin-view/admin-view.component';
+import { OffersViewComponent } from './pages/offers-view/offers-view.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/scripts', pathMatch: 'full' },
-  { path: 'log-in', component: LogInComponent },
+  { path: 'login', component: LogInComponent },
   { path: 'sign-up', component: SignInCardComponent },
   {
     path: 'scripts',
@@ -19,6 +20,7 @@ export const routes: Routes = [
     component: ScriptViewComponent,
   },
   { path: 'feed', title: 'Feed', component: FeedViewComponent },
+  { path: 'offers', title: 'Offers', component: OffersViewComponent },
   { path: 'profile', title: 'Profile', component: ProfileViewComponent },
   { path: 'courses', title: 'Courses', component: CoursesViewComponent },
   { path: 'blog', title: 'Blog', component: BlogViewComponent },
