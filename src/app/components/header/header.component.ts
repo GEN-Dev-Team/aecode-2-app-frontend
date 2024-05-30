@@ -19,13 +19,12 @@ import {
 } from '../icons';
 import { SvgPointComponent } from '../icons/svg-point/svg-point.component';
 import { LogInComponent } from '../log-in/log-in.component';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { SvgUnlogUserComponent } from '../icons/svg-unlog-user/svg-unlog-user.component';
 import { SvgCaretDownComponent } from '../icons/svg-caret-down/svg-caret-down.component';
 import { SvgCaretUpComponent } from '../icons/svg-caret-up/svg-caret-up.component';
 import { User } from '../../models/user';
 import { AuthService } from '../../core/services/auth.service';
-import { DOCUMENT } from '@angular/common';
 import { LocalStorageService } from '../../core/services/local-storage.service';
 import { SvgOffersComponent } from '../icons/svg-offers/svg-offers.component';
 
@@ -33,6 +32,7 @@ import { SvgOffersComponent } from '../icons/svg-offers/svg-offers.component';
   selector: 'app-header',
   standalone: true,
   imports: [
+    RouterOutlet,
     SvgNotificationComponent,
     SvgPointComponent,
     LogInComponent,
@@ -54,6 +54,7 @@ export class HeaderComponent implements OnChanges, OnInit {
   auth = inject(AuthService);
   @Input() userLogged!: User;
   @Output() isLogged = new EventEmitter<boolean>();
+  isUserLogged = true;
 
   constructor(private localStorage: LocalStorageService) {}
 
@@ -62,6 +63,7 @@ export class HeaderComponent implements OnChanges, OnInit {
     //Add '${implements OnChanges}' to the class.
     if (this.userLogged) {
       this.isLogged.emit(true);
+      this.isUserLogged = true;
     }
   }
 
@@ -73,6 +75,7 @@ export class HeaderComponent implements OnChanges, OnInit {
   }
 
   signOut() {
+    this.isUserLogged = false;
     this.isLogged.emit(false);
     this.localStorage.clear();
     sessionStorage.removeItem('loggedInUser');

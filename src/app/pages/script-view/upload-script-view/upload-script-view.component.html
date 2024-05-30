@@ -1,0 +1,153 @@
+<div
+  class="w-[400px] m-auto max-w-lg p-4 bg-[#F0EFFF] border border-[#7837DD] border-opacity-30 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
+>
+  <form [formGroup]="scriptForm" (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+      <label
+        for="id_prueba"
+        class="block mb-1 text-[10px] font-medium text-gray-900 dark:text-white"
+        >ID del script</label
+      >
+      <input
+        type="number"
+        id="id_prueba"
+        formControlName="id_prueba"
+        class="form-control bg-transparent border text-gray-900 text-[10px] placeholder:text-main-purple placeholder:text-opacity-50 border-main-purple rounded-lg focus:ring-main-purple focus:border-main-purple block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        placeholder="ID del script"
+        required
+      />
+      @if(scriptForm.get('id_prueba')?.hasError('required') &&
+      scriptForm.get('id_prueba')?.touched){
+      <div class="form-error text-red-700">Complete el campo</div>
+      }
+    </div>
+    <div class="mb-4">
+      <label
+        for="prueba_name"
+        class="block mb-1 text-[10px] font-medium text-gray-900 dark:text-white"
+        >Nombre del script</label
+      >
+      <input
+        type="texto"
+        id="nombre"
+        formControlName="nombre"
+        class="form-control bg-transparent border text-gray-900 text-[10px] placeholder:text-main-purple placeholder:text-opacity-50 border-main-purple rounded-lg focus:ring-main-purple focus:border-main-purple block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        placeholder="Nombre del script"
+        required
+      />
+      @if(scriptForm.get('nombre')?.hasError('required') &&
+      scriptForm.get('nombre')?.touched){
+      <div class="form-error text-red-700">Complete el campo</div>
+      }
+    </div>
+    <div class="mb-4">
+      <label
+        for="text"
+        class="block mb-1 text-[10px] font-medium text-gray-900 dark:text-white"
+        >Descripcion del script</label
+      >
+      <input
+        type="text"
+        id="descripcion"
+        formControlName="descripcion"
+        class="form-control bg-transparent border text-gray-900 text-[10px] placeholder:text-main-purple placeholder:text-opacity-50 border-main-purple rounded-lg focus:ring-main-purple focus:border-main-purple block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        placeholder="Descripcion del script"
+        required
+      />
+      @if(scriptForm.get('descripcion')?.hasError('required') &&
+      scriptForm.get('descripcion')?.touched){
+      <div class="form-error text-red-700">Complete el campo</div>
+      }
+    </div>
+
+    <div class="relative">
+      <label
+        for="prueba_multimedia"
+        class="block mb-1 text-[10px] font-medium text-gray-900 dark:text-white"
+        >Subir script</label
+      >
+      <input
+        type="file"
+        id="prueba_multimedia"
+        (change)="onFileChange($event)"
+        class="form-control bg-transparent border text-gray-900 text-[10px] rounded-lg block w-auto p-1.5 placeholder:text-main-purple placeholder:text-opacity-50 border-main-purple focus:ring-main-purple focus:border-main-purple"
+        required
+      />
+      @if(scriptForm.get('prueba_multimedia')?.hasError('required') &&
+      scriptForm.get('prueba_multimedia')?.touched){
+      <div class="form-error text-red-700">Complete el campo</div>
+      }
+    </div>
+
+    <div>
+      <button
+        type="submit"
+        class="bg-main-purple mt-5 hover:opacity-95 text-white border border-main-purple text-[10px] rounded-lg focus:border-white block w-full p-1.5"
+      >
+        Registrar
+      </button>
+      <button
+        type="button"
+        (click)="onClose()"
+        class="bg-main-purple mt-5 hover:opacity-95 text-white border border-main-purple text-[10px] rounded-lg focus:border-white block w-full p-1.5"
+      >
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
+
+<table
+  class="w-full text-xs text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-10 mb-52"
+>
+  <thead
+    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+  >
+    <tr>
+      <th scope="col" class="px-6 py-3">ID</th>
+      <th scope="col" class="px-6 py-3">Script name</th>
+      <th scope="col" class="px-6 py-3">Script description</th>
+      <th scope="col" class="px-6 py-3">File</th>
+      <th scope="col" class="px-6 py-3">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of scriptList; track item.id_prueba) {
+    <tr
+      class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+    >
+      <th
+        scope="row"
+        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+      >
+        {{ item.id_prueba }}
+      </th>
+      <td class="px-6 py-4">{{ item.nombre }}</td>
+      <td class="px-6 py-4">{{ item.descripcion }}</td>
+      <td class="px-6 py-4">
+        <img [src]="item.prueba_multimedia" alt="" class="size-10" />
+        <p>{{ item.prueba_multimedia }}</p>
+      </td>
+
+      <td class="flex items-center px-6 py-4">
+        <button
+          type="button"
+          class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+        >
+          <app-svg-edit />
+        </button>
+        <button
+          type="button"
+          class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3"
+        >
+          <app-sgv-trash />
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+<!-- <app-model [isOpen]="isModelOpen" (closeModel)="closeModel()">
+  <app-role-form (onCloseModel)="closeModel()" [data]="role"></app-role-form>
+</app-model> -->

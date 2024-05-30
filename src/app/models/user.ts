@@ -6,6 +6,7 @@ export interface User {
   profile_Gender?: string;
   profile_email: string;
   profile_password: string;
-  profile_Birthdate: string;
+  profile_Birthdate?: string;
+  profile_image?: string;
   role: Role;
 }

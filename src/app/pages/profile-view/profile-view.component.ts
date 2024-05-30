@@ -10,6 +10,7 @@ import { SvgEditComponent } from '../../components/icons/svg-edit/svg-edit.compo
 import { SvgCameraComponent } from '../../components/icons/svg-camera/svg-camera.component';
 import { SvgProfileFilterComponent } from '../../components/icons/svg-profile-filter/svg-profile-filter.component';
 import { ProfileUploadContainerComponent } from './profile-upload-container/profile-upload-container.component';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-profile-view',
@@ -31,6 +32,10 @@ import { ProfileUploadContainerComponent } from './profile-upload-container/prof
   styleUrl: './profile-view.component.css',
 })
 export class ProfileViewComponent {
+  id: number = 0;
+
+  constructor(private route: ActivatedRoute) {}
+
   profileKeyWords = [
     {
       id: 1,
@@ -49,4 +54,12 @@ export class ProfileViewComponent {
       title: 'Galapagos',
     },
   ];
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.route.params.subscribe((data: Params) => {
+      this.id = data['id'];
+    });
+  }
 }

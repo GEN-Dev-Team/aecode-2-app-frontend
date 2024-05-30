@@ -93,7 +93,7 @@
       <div
         class="flex relative gap-x-5 items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
       >
-        @if(userLogged) {
+        @if(userLogged && isUserLogged) {
         <button
           class="group flex flex-col items-center hover:bg-[#4E1EA5] py-4 w-36 gap-y-1 text-white"
         >
@@ -111,7 +111,7 @@
         >
           <img
             class="size-5 rounded-full"
-            src="https://github.com/lucianets.png"
+            src="https://github.com/Sthepen-EA.png"
             alt="user photo"
           />
           <div class="flex flex-row items-center gap-x-1">
@@ -139,14 +139,17 @@
           id="user-dropdown"
         >
           <a href="/profile" class="px-4 py-3 flex flex-col">
-            <span class="text-sm text-gray-900 dark:text-white"
-              >Lucia Villalobos</span
-            >
-            <span class="text-sm text-gray-500 truncate dark:text-gray-400"
-              >lucia.genplus&#64;gmail.com</span
-            >
+            <span class="text-sm text-gray-900 dark:text-white">{{
+              userLogged.profile_Fullname
+            }}</span>
+            <span class="text-sm text-gray-500 truncate dark:text-gray-400">{{
+              userLogged.profile_email
+            }}</span>
           </a>
-          <ul class="py-2" aria-labelledby="user-menu-button">
+          <ul
+            class="py-2 font-[ruberoid-medium] space-y-[14px]"
+            aria-labelledby="user-menu-button"
+          >
             <li>
               <a
                 href="#"
@@ -163,7 +166,7 @@
             </li>
             <li>
               <a
-                href="#"
+                href="/admin"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                 >Administrar y gestionar</a
               >

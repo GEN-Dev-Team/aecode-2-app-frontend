@@ -19,6 +19,7 @@ import { LoginService } from '../../../core/services/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../../../core/services/local-storage.service';
+import { UserServiceService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'app-log-in-card',
@@ -49,6 +50,7 @@ export class LogInCardComponent implements OnInit {
     fb: FormBuilder,
     private logInService: LoginService,
     private toastService: ToastrService,
+    private userService: UserServiceService,
     private localStorage: LocalStorageService
   ) {
     this.loginForm = fb.group({
@@ -84,6 +86,27 @@ export class LogInCardComponent implements OnInit {
       const payload = this.decodeToken(response.credential);
       //Almacenamos en la sesion, session storage
       sessionStorage.setItem('loggedInUser', JSON.stringify(payload));
+      //Creamos usuario para almacenar en nuestra base de datos
+      this.user = {
+        id_profile: 0,
+        profile_email: payload.email,
+        profile_password: '123',
+        profile_Fullname: payload.given_name,
+      };
+
+      console.log(this.user);
+      return;
+      this.userService.createUser(payload).subscribe({
+        next: (response) => {
+          this.user = response;
+          console.log(this.user);
+          this.localStorage.setItem('User Logged', this.user);
+          this.userLoggedEvent();
+        },
+        error: (error) => {
+          this.toastService.error(error);
+        },
+      });
       //Navegamos a la ruta principal
       this.router.navigate(['/scripts']);
     }

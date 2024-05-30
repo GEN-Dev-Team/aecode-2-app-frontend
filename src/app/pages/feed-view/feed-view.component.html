@@ -120,6 +120,52 @@
       </div>
 
       <app-post-container></app-post-container>
+
+      <div class="w-[1020px] p-[31px] bg-white mt-[30px] rounded-md">
+        <div class="flex flex-row relative font-[ruberoid-semibold]">
+          <span class="text-lg">Hashtag que te pueden interesar</span>
+          <a
+            href="#"
+            class="flex items-center absolute top-0 right-0 text-xl text-gray-500"
+          >
+            •••
+          </a>
+        </div>
+
+        <div
+          class="w-[958px] pt-[30px] gap-x-[20px] flex flex-wrap gap-y-[20px]"
+        >
+          @for (item of hashtagList; track item.id_hashtag) {
+
+          <a
+            href="#"
+            class="p-[10px] text-morado-3 text-sm font-[plusjakartasans-regular] rounded-md bg-morado-claro w-fit"
+          >
+            #{{ item.hashtag_name }}
+          </a>
+          } @for (item of hashtagList; track item.id_hashtag) {
+
+          <a
+            href="#"
+            class="p-[10px] text-morado-3 text-sm font-[plusjakartasans-regular] rounded-md bg-morado-claro w-fit"
+          >
+            #{{ item.hashtag_name }}
+          </a>
+          } @for (item of hashtagList; track item.id_hashtag) {
+
+          <a
+            href="#"
+            class="p-[10px] text-morado-3 text-sm font-[plusjakartasans-regular] rounded-md bg-morado-claro w-fit"
+          >
+            #{{ item.hashtag_name }}
+          </a>
+          }
+        </div>
+      </div>
+
+      <app-recomendation-container />
+
+      <app-contact-recomendation />
     </div>
   </div>
 </div>

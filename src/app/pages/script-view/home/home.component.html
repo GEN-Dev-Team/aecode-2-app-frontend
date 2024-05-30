@@ -1,0 +1,100 @@
+<div class="home-container relative content-center h-[864px] bg-white">
+  <app-main-container>
+    <div class="flex flex-col text-center w-[999px] mx-auto mb-5">
+      <h1 class="home-title items-center opacity-90 text-nowrap pt-20">
+        Ingeniería 4.0 & Programación
+      </h1>
+      <h2 class="home-subtitle text-main-purple text-nowrap mx-auto pt-7">
+        INNOVACION | DIGITALIZACION | AUTOMATIZACION
+      </h2>
+      <h3>
+        Únete a la comunidad líder para profesionales del sector AEC enfocados
+        en la innovación y digitalización. Conecta con empresas, explora
+        soluciones de automatización, artículos y cursos especializados, y un
+        amplio networking donde podrás compartir tus ideas a nivel mundial.
+      </h3>
+    </div>
+    <app-scripts-carousel />
+  </app-main-container>
+
+  <!--Grupo de la izquierda-->
+  @for (item of commentList; track item.id) {
+  <app-users-comments [comment]="item" />
+  }
+
+  <div
+    class="absolute top-[387px] left-[120px] h-[100px] flex flex-row gap-x-[15px]"
+  >
+    <div
+      class="home-bubble rounded-md bg-gris text-white text-base h-[44px] p-2 pt-2.5 mt-[15px] flex-nowrap w-fit"
+    >
+      Muy útil
+    </div>
+    <img
+      src="https://github.com/Sthepen-EA.png"
+      alt=""
+      class="size-[73px] rounded-full"
+    />
+  </div>
+
+  <div
+    class="absolute top-[709px] left-[40px] h-[100px] flex flex-row gap-x-[15px]"
+  >
+    <img
+      src="https://github.com/Sthepen-EA.png"
+      alt=""
+      class="size-[100px] rounded-full"
+    />
+    <div
+      class="home-bubble rounded-md bg-morado-2 text-white text-base h-[44px] p-2 pt-2.5 mt-[56px] flex-nowrap w-fit"
+    >
+      Genial plataforma
+    </div>
+  </div>
+
+  <!--Grupo de la derecha-->
+  <div
+    class="absolute top-[40px] right-[40px] h-[100px] flex flex-row gap-x-[15px]"
+  >
+    <div
+      class="home-bubble rounded-md bg-naranja-1 text-white text-base h-[44px] p-2 pt-2.5 mt-[15px] flex-nowrap w-fit"
+    >
+      ¡Gran comunidad!
+    </div>
+    <img
+      src="https://github.com/Sthepen-EA.png"
+      alt=""
+      class="size-[100px] rounded-full"
+    />
+  </div>
+
+  <div
+    class="absolute top-[387px] right-[120px] h-[100px] flex flex-row gap-x-[15px]"
+  >
+    <img
+      src="https://github.com/Sthepen-EA.png"
+      alt=""
+      class="size-[73px] rounded-full"
+    />
+    <div
+      class="home-bubble rounded-md bg-gris text-white text-base h-[44px] p-2 pt-2.5 mt-[15px] flex-nowrap w-fit"
+    >
+      Buena!
+    </div>
+  </div>
+
+  <div
+    class="absolute top-[709px] right-[55px] h-[100px] flex flex-row gap-x-[15px]"
+  >
+    <div
+      class="home-bubble rounded-md bg-verde-2 text-white text-base h-[44px] p-2 pt-2.5 mt-[56px] flex-nowrap w-fit"
+    >
+      Impresionante
+    </div>
+    <img
+      src="https://github.com/Sthepen-EA.png"
+      alt=""
+      class="size-[100px] rounded-full"
+    />
+  </div>
+</div>

@@ -21,6 +21,9 @@ import { SvgForyouComponent } from '../../components/icons/svg-foryou/svg-foryou
 import { SvgBuildingComponent } from '../../components/icons/svg-building/svg-building.component';
 import { IHashtagElement } from './model/IHashtagElement';
 import { HashtagContainerElementComponent } from './hashtag-container-element/hashtag-container-element.component';
+import { RecomendationContainerComponent } from './recomendation-container/recomendation-container.component';
+import { SvgViewComponent } from '../../components/icons/svg-view/svg-view.component';
+import { ContactRecomendationComponent } from './contact-recomendation/contact-recomendation.component';
 
 @Component({
   selector: 'app-feed-view',
@@ -43,6 +46,9 @@ import { HashtagContainerElementComponent } from './hashtag-container-element/ha
     SvgForyouComponent,
     SvgBuildingComponent,
     HashtagContainerElementComponent,
+    RecomendationContainerComponent,
+    SvgViewComponent,
+    ContactRecomendationComponent,
   ],
   templateUrl: './feed-view.component.html',
   styleUrl: './feed-view.component.css',

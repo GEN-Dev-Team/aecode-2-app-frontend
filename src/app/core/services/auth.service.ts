@@ -12,6 +12,6 @@ export class AuthService {
 
   signOut() {
     google.accounts.id.disableAutoSelect();
-    this.router.navigate(['/log-in']);
+    this.router.navigate(['/scripts']);
   }
 }

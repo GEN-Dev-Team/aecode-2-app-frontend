@@ -5,8 +5,6 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { isPlatformBrowser } from '@angular/common';
-import { HomeComponent } from './components/home/home.component';
-import { SliderComponent } from './components/slider/slider.component';
 import { MessageComponent } from './components/message/message.component';
 import { ScriptViewComponent } from './pages/script-view/script-view.component';
 import { FeedViewComponent } from './pages/feed-view/feed-view.component';
@@ -25,8 +23,6 @@ import { User } from './models/user';
     NavBarComponent,
     FooterComponent,
     HeaderComponent,
-    HomeComponent,
-    SliderComponent,
     MessageComponent,
     ScriptViewComponent,
     FeedViewComponent,
@@ -40,6 +36,7 @@ import { User } from './models/user';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
+  title = 'AECODE 2';
   isLogged = false;
   userLogged!: User;
 
@@ -52,8 +49,6 @@ export class AppComponent implements OnInit {
   isUserLogged(isLogged: boolean) {
     this.isLogged = isLogged;
   }
-
-  title = 'AECODE 2';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
