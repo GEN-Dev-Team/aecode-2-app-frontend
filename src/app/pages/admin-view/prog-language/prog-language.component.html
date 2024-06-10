@@ -1,0 +1,71 @@
+<div class="flex justify-end mb-4">
+  <app-button type="button" (click)="openModel()">
+    <span>Agregar registro</span>
+  </app-button>
+  <div
+    id="proglang-modal"
+    tabindex="-1"
+    aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+  >
+    <app-prog-language-form />
+  </div>
+</div>
+<table
+  class="w-full text-xs text-left rtl:text-right text-gray-500 dark:text-gray-400"
+>
+  <thead
+    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+  >
+    <tr>
+      <th scope="col" class="px-6 py-3">ID</th>
+      <th scope="col" class="px-6 py-3">ProgLang name</th>
+      <th scope="col" class="px-6 py-3">ProgLang imagen</th>
+      <th scope="col" class="px-6 py-3">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of progLanguageList; track item.id_proglang) {
+    <tr
+      class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+    >
+      <th
+        scope="row"
+        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+      >
+        {{ item.id_proglang }}
+      </th>
+
+      <td class="px-6 py-4">{{ item.proglang_name }}</td>
+
+      <td class="px-6 py-4">
+        <img src="{{ item.progLang_imagen }}" alt="" class="size-10" />
+      </td>
+
+      <td class="flex items-center px-6 py-4">
+        <button
+          (click)="loadProgLanguage(item)"
+          type="button"
+          class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+        >
+          <app-svg-edit />
+        </button>
+        <button
+          (click)="deleteProgLanguage(item.id_proglang!)"
+          type="button"
+          class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3"
+        >
+          <app-sgv-trash />
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+<app-model [isOpen]="isModelOpen" (closeModel)="closeModel()">
+  <app-prog-language-form
+    (onCloseModel)="closeModel()"
+    [data]="progLanguage"
+  ></app-prog-language-form>
+</app-model>

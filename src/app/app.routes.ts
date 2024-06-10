@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { LogInComponent } from './components/log-in/log-in.component';
 import { AdminViewComponent } from './pages/admin-view/admin-view.component';
 import { OffersViewComponent } from './pages/offers-view/offers-view.component';
+import { ScriptSubvierwComponent } from './components/script-subvierw/script-subvierw.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/scripts', pathMatch: 'full' },
@@ -17,6 +18,8 @@ export const routes: Routes = [
     title: 'Scripts',
     component: ScriptViewComponent,
   },
+  { path: 'scripts/:scriptId', component: ScriptSubvierwComponent },
+
   { path: 'feed', title: 'Feed', component: FeedViewComponent },
   { path: 'offers', title: 'Offers', component: OffersViewComponent },
   {

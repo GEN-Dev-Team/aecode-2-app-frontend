@@ -3,19 +3,21 @@
     <app-side-bar (callTable)="getCallTable($event)" />
 
     <div class="p-4 w-full">
-      @if (callTable == "UsersTable") {
-      <app-user />} @else if(callTable=="RolesTable"){ <app-role />}
+      @switch (callTable) { @case ("UsersTable"){
+      <app-user />
+      } @case ("RolesTable"){
+      <app-role />
+      } @case ("CurrenciesTable"){
+      <app-currency />
+      } @case ("PlansTable"){
+      <app-plan />
+      } @case ("ProgLanguagesTable"){
+      <app-prog-language />
+      } @case ("SoftwaresTable"){
+      <app-software />
+      } @case ("TagsTable"){
+      <app-tag />
+      } }
     </div>
   </div>
-</div>
-
-<div
-  id="default-modal"
-  tabindex="-1"
-  aria-hidden="true"
-  class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
->
-  @if (callTable == "UsersTable") {
-  <app-sign-in-card [data]="user" />} @else if(callTable=="RolesTable"){
-  <app-role-form [data]="role" />}
 </div>

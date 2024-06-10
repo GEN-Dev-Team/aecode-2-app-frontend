@@ -107,8 +107,8 @@ export class SignInCardComponent implements OnChanges, OnInit {
           next: (response) => {
             this.toastServie.success(
               this.data
-                ? 'User updated successfully!'
-                : 'User created successfully!'
+                ? 'User created successfully!'
+                : 'User updated successfully!'
             );
             this.resetForm();
           },

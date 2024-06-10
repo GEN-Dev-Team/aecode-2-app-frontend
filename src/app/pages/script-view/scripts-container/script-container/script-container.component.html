@@ -1,17 +1,20 @@
 <div
   class="scritpt-container-item flex flex-col mx-auto rounded-md bg-gris-2 w-[331px] h-[376px]"
 >
-  <div class="pb-2 h-[251px] rounded-t-md">
+  <a
+    [routerLink]="['/scripts', '{{ script.script_name }}']"
+    class="pb-2 h-[251px] rounded-t-md"
+  >
     <img
       class="w-full h-full rounded-t-md"
-      src="https://pythones.net/wp-content/uploads/2018/09/Captura-de-pantalla-de-2020-05-25-14-47-50-min.png"
+      src="{{ script.script_multimedia }}"
       alt=""
     />
-  </div>
+  </a>
 
   <div class="px-4 pt-1">
     <h4 class="script-title text-nowrap overflow-hidden truncate">
-      Inteligencia Artificial en la Ingeniería Civil y construccion
+      {{ script.script_name }}
     </h4>
     <div class="-mt-3 text-xs text-gray-500">
       <span>Publicado</span>
@@ -26,13 +29,13 @@
       >
         <img
           class="size-6 rounded-full"
-          src="https://github.com/lucianets.png"
+          src="{{ script.profile.profile_image }}"
           alt="user photo"
         />
         <div class="flex flex-row items-center">
           <span
             class="script-author ms-2 w-[95px] truncate overflow-hidden text-black"
-            >Lucia Cordova de la cruz</span
+            >{{ script.profile.profile_Fullname }}</span
           >
         </div>
       </button>
@@ -49,7 +52,7 @@
         </app-reaction-item>
 
         <app-reaction-item>
-          <app-svg-view class="size-5" />
+          <app-svg-view class="size-5 fill-[#8BC751]" />
           <span class="text-xs text-gray-500"> 1.5k </span>
         </app-reaction-item>
       </div>

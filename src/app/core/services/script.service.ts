@@ -1,42 +1,48 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { IScriptDemo } from '../../models/script';
+import { IScript } from '../../models/script';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root',
 })
 export class ScriptService {
-  apiurl = 'https://aecode.onrender.com/prueba';
-  // Local storage requests test
-
-  private backurl = `${base_url}/scripts`;
+  apiurl = `${base_url}/script`;
 
   constructor(private http: HttpClient) {}
 
   getAllScripts() {
-    return this.http.get<IScriptDemo[]>(`${this.apiurl}/imagenes`);
+    return this.http.get<IScript[]>(`${this.apiurl}`);
   }
 
-  getScript(id: number): Observable<IScriptDemo> {
-    return this.http.get<IScriptDemo>(`${this.apiurl}/${id}`);
+  getScript(id: number): Observable<IScript> {
+    return this.http.get<IScript>(`${this.apiurl}/${id}`);
   }
 
-  createScript(scriptData: any, scripFile: File) {
+  createScript(scriptMiniature: File[], scriptFile: File, scriptData: any) {
     const formData = new FormData();
-    formData.append('file', scripFile);
-    formData.append('data', JSON.stringify(scriptData));
+
+    // Agregar cada archivo de scriptMiniature al formData
+    scriptMiniature.forEach((file, index) => {
+      formData.append(`Smultimedia`, file, file.name);
+    });
+
+    // Agregar el archivo principal scriptFile al formData
+    formData.append('Sscript', scriptFile);
+
+    // Agregar los datos adicionales scriptData al formData
+    formData.append('Sdata', JSON.stringify(scriptData));
 
     return this.http.post<any>(this.apiurl, formData);
   }
 
-  updateScript(script: IScriptDemo) {
+  updateScript(script: IScript) {
     return this.http.put(this.apiurl, script);
   }
 
-  deleteScript(id: number): Observable<IScriptDemo[]> {
-    return this.http.delete<IScriptDemo[]>(`${this.apiurl}/${id}`);
+  deleteScript(id: number): Observable<IScript[]> {
+    return this.http.delete<IScript[]>(`${this.apiurl}/${id}`);
   }
 }

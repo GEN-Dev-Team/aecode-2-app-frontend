@@ -1,102 +1,4 @@
-<div
-  class="w-[400px] m-auto max-w-lg p-4 bg-[#F0EFFF] border border-[#7837DD] border-opacity-30 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
->
-  <form [formGroup]="scriptForm" (ngSubmit)="onSubmit()">
-    <div class="mb-4">
-      <label
-        for="id_prueba"
-        class="block mb-1 text-[10px] font-medium text-gray-900 dark:text-white"
-        >ID del script</label
-      >
-      <input
-        type="number"
-        id="id_prueba"
-        formControlName="id_prueba"
-        class="form-control bg-transparent border text-gray-900 text-[10px] placeholder:text-main-purple placeholder:text-opacity-50 border-main-purple rounded-lg focus:ring-main-purple focus:border-main-purple block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-        placeholder="ID del script"
-        required
-      />
-      @if(scriptForm.get('id_prueba')?.hasError('required') &&
-      scriptForm.get('id_prueba')?.touched){
-      <div class="form-error text-red-700">Complete el campo</div>
-      }
-    </div>
-    <div class="mb-4">
-      <label
-        for="prueba_name"
-        class="block mb-1 text-[10px] font-medium text-gray-900 dark:text-white"
-        >Nombre del script</label
-      >
-      <input
-        type="texto"
-        id="nombre"
-        formControlName="nombre"
-        class="form-control bg-transparent border text-gray-900 text-[10px] placeholder:text-main-purple placeholder:text-opacity-50 border-main-purple rounded-lg focus:ring-main-purple focus:border-main-purple block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-        placeholder="Nombre del script"
-        required
-      />
-      @if(scriptForm.get('nombre')?.hasError('required') &&
-      scriptForm.get('nombre')?.touched){
-      <div class="form-error text-red-700">Complete el campo</div>
-      }
-    </div>
-    <div class="mb-4">
-      <label
-        for="text"
-        class="block mb-1 text-[10px] font-medium text-gray-900 dark:text-white"
-        >Descripcion del script</label
-      >
-      <input
-        type="text"
-        id="descripcion"
-        formControlName="descripcion"
-        class="form-control bg-transparent border text-gray-900 text-[10px] placeholder:text-main-purple placeholder:text-opacity-50 border-main-purple rounded-lg focus:ring-main-purple focus:border-main-purple block w-full p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-        placeholder="Descripcion del script"
-        required
-      />
-      @if(scriptForm.get('descripcion')?.hasError('required') &&
-      scriptForm.get('descripcion')?.touched){
-      <div class="form-error text-red-700">Complete el campo</div>
-      }
-    </div>
-
-    <div class="relative">
-      <label
-        for="prueba_multimedia"
-        class="block mb-1 text-[10px] font-medium text-gray-900 dark:text-white"
-        >Subir script</label
-      >
-      <input
-        type="file"
-        id="prueba_multimedia"
-        (change)="onFileChange($event)"
-        class="form-control bg-transparent border text-gray-900 text-[10px] rounded-lg block w-auto p-1.5 placeholder:text-main-purple placeholder:text-opacity-50 border-main-purple focus:ring-main-purple focus:border-main-purple"
-        required
-      />
-      @if(scriptForm.get('prueba_multimedia')?.hasError('required') &&
-      scriptForm.get('prueba_multimedia')?.touched){
-      <div class="form-error text-red-700">Complete el campo</div>
-      }
-    </div>
-
-    <div>
-      <button
-        type="submit"
-        class="bg-main-purple mt-5 hover:opacity-95 text-white border border-main-purple text-[10px] rounded-lg focus:border-white block w-full p-1.5"
-      >
-        Registrar
-      </button>
-      <button
-        type="button"
-        (click)="onClose()"
-        class="bg-main-purple mt-5 hover:opacity-95 text-white border border-main-purple text-[10px] rounded-lg focus:border-white block w-full p-1.5"
-      >
-        Cancelar
-      </button>
-    </div>
-  </form>
-</div>
-
+<app-script-form />
 <table
   class="w-full text-xs text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-10 mb-52"
 >
@@ -104,15 +6,23 @@
     class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
   >
     <tr>
-      <th scope="col" class="px-6 py-3">ID</th>
-      <th scope="col" class="px-6 py-3">Script name</th>
-      <th scope="col" class="px-6 py-3">Script description</th>
-      <th scope="col" class="px-6 py-3">File</th>
-      <th scope="col" class="px-6 py-3">Action</th>
+      <th scope="col" class="px-6 py-3">id_script</th>
+      <th scope="col" class="px-6 py-3">id_profile</th>
+      <th scope="col" class="px-6 py-3">id_software</th>
+      <th scope="col" class="px-6 py-3">id_proglang</th>
+      <th scope="col" class="px-6 py-3">id_tag</th>
+      <th scope="col" class="px-6 py-3">id_currency</th>
+      <th scope="col" class="px-6 py-3">id_plan</th>
+      <th scope="col" class="px-6 py-3">script_name</th>
+      <th scope="col" class="px-6 py-3">script_file</th>
+      <th scope="col" class="px-6 py-3">script_multimedia</th>
+      <th scope="col" class="px-6 py-3">script_description</th>
+      <th scope="col" class="px-6 py-3">script_price</th>
+      <th scope="col" class="px-6 py-3">script_date</th>
     </tr>
   </thead>
   <tbody>
-    @for (item of scriptList; track item.id_prueba) {
+    @for (item of scriptList; track item.id_script) {
     <tr
       class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
     >
@@ -120,14 +30,45 @@
         scope="row"
         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
       >
-        {{ item.id_prueba }}
+        {{ item.id_script }}
       </th>
-      <td class="px-6 py-4">{{ item.nombre }}</td>
-      <td class="px-6 py-4">{{ item.descripcion }}</td>
+      <td class="px-6 py-4">{{ item.profile.profile_Fullname }}</td>
+
       <td class="px-6 py-4">
-        <img [src]="item.prueba_multimedia" alt="" class="size-10" />
-        <p>{{ item.prueba_multimedia }}</p>
+        @for (item of item.software; track item.id_software) {
+        <p>{{ item.software_name }}</p>
+        }
       </td>
+
+      <td class="px-6 py-4">
+        @for (item of item.proglang; track item.id_proglang) {
+        <p>{{ item.proglang_name }}</p>
+
+        }
+      </td>
+
+      <td class="px-6 py-4">
+        @for (item of item.tag; track item.id_tag) {
+        <p>{{ item.tag_name }}</p>
+        }
+      </td>
+
+      <td class="px-6 py-4">{{ item.currency.currency_name }}</td>
+      <td class="px-6 py-4">{{ item.plan.plan_name }}</td>
+      <td class="px-6 py-4">{{ item.script_name }}</td>
+      <td class="px-6 py-4">
+        <img [src]="item.script_file" alt="" class="size-10" />
+        <p>{{ item.script_file }}</p>
+      </td>
+      <td class="px-6 py-4">
+        @for (item of item.script_multimedia; track item) {
+        <img [src]="item" alt="" class="size-10" />
+        <p>{{ item }}</p>
+        }
+      </td>
+      <td class="px-6 py-4">{{ item.script_description }}</td>
+      <td class="px-6 py-4">{{ item.script_price }}</td>
+      <td class="px-6 py-4">{{ item.script_date }}</td>
 
       <td class="flex items-center px-6 py-4">
         <button
@@ -147,7 +88,3 @@
     }
   </tbody>
 </table>
-
-<!-- <app-model [isOpen]="isModelOpen" (closeModel)="closeModel()">
-  <app-role-form (onCloseModel)="closeModel()" [data]="role"></app-role-form>
-</app-model> -->

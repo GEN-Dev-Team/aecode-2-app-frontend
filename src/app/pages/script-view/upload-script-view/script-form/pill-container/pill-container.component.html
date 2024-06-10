@@ -1,0 +1,33 @@
+<div
+  class="bg-main-purple rounded-full flex flex-row w-auto p-[3px] h-[22px] text-white gap-x-[5px] text-xs font-[plusjakartasans-medium]"
+>
+  @if(ProgLang) {
+  <img
+    [src]="ProgLang.id_proglang"
+    [alt]="ProgLang.proglang_name"
+    class="size-4 rounded-full"
+  />
+  <p>{{ ProgLang.proglang_name }}</p>
+
+  } @if(Software) {
+  <img
+    [src]="Software.id_software"
+    [alt]="Software.software_name"
+    class="size-4 rounded-full"
+  />
+  <p>{{ Software.software_name }}</p>
+
+  } @if(Currency) {
+  <img
+    [src]="Currency.id_currency"
+    [alt]="Currency.currency_name"
+    class="size-4 rounded-full"
+  />
+  <p>{{ Currency.currency_name }}</p>
+
+  } @if(Tag) {
+  <p>{{ Tag.tag_name }}</p>
+  }
+
+  <app-svg-close-model class="size-[15px] fill-[#C4C4C4] cursor-pointer" />
+</div>

@@ -9,10 +9,7 @@ const base_url = environment.base;
   providedIn: 'root',
 })
 export class RoleService {
-  apiurl = 'https://aecode.onrender.com/roles';
-  // Local storage requests test
-
-  private backurl = `${base_url}/roles`;
+  apiurl = `${base_url}/roles`;
 
   constructor(private http: HttpClient) {}
 

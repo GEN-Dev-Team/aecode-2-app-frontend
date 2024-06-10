@@ -9,10 +9,7 @@ const base_url = environment.base;
   providedIn: 'root',
 })
 export class UserServiceService {
-  apiurl = 'https://aecode.onrender.com/profile';
-  // Local storage requests test
-
-  private backurl = `${base_url}/profile`;
+  apiurl = `${base_url}/profile`;
 
   constructor(private http: HttpClient) {}
 

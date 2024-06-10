@@ -1,0 +1,11 @@
+.script-subview-header {
+  font-family: "Ruberoid-Regular";
+  font-size: 14px;
+  background-color: white;
+  padding-block: 15px;
+}
+
+.script-subview-header a {
+  padding-inline: 10px;
+  padding-block: 17px;
+}

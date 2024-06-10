@@ -1,0 +1,34 @@
+h1 {
+  font-family: "plusjakartasans-semibold";
+  font-size: 32px;
+  margin: 0;
+}
+
+h2,
+form,
+label,
+.price-container {
+  font-family: "plusjakartasans-medium";
+  font-size: 16px;
+  margin: 0;
+}
+
+input,
+.items-selected {
+  font-family: "plusjakartasans-semibold";
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #b4bbbf;
+  padding: 15px;
+}
+
+input::placeholder {
+  font-family: "plusjakartasans-medium";
+  font-size: 16px;
+  color: #6e6e6e;
+  opacity: 0.5;
+}
+
+input[type="file"] {
+  display: none;
+}

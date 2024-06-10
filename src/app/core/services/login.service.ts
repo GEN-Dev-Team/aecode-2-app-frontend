@@ -10,7 +10,7 @@ const base_url = environment.base;
   providedIn: 'root',
 })
 export class LoginService {
-  apiurl = 'https://aecode.onrender.com/profile/login';
+  apiurl = `${base_url}/profile/login`;
 
   constructor(private http: HttpClient) {}
 

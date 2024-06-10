@@ -42,7 +42,10 @@
         <span>Limpiar</span>
       </app-button>
     </div>
-    <app-button class="text-white bg-main-purple rounded-md">
+    <app-button
+      (click)="openModel()"
+      class="text-white bg-main-purple rounded-md"
+    >
       <span>Subir código</span>
       <app-svg-upload />
     </app-button>
@@ -59,3 +62,11 @@
     </div>
   </div>
 </div>
+
+<app-model [isOpen]="isModelOpen" (closeModel)="closeModel()">
+  <app-script-form
+    (onCloseModel)="closeModel()"
+    [data]="script"
+    [editUser]="editScript"
+  ></app-script-form>
+</app-model>

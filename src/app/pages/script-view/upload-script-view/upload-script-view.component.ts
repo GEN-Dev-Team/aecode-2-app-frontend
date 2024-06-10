@@ -1,20 +1,12 @@
 import { Component } from '@angular/core';
-import { IScriptDemo } from '../../../models/script';
+import { IScript } from '../../../models/script';
 import { ScriptService } from '../../../core/services/script.service';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SvgEditComponent } from '../../../components/icons/svg-edit/svg-edit.component';
 import { SgvTrashComponent } from '../../../components/icons/sgv-trash/sgv-trash.component';
-import {
-  HttpClient,
-  HttpClientModule,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { ModelComponent } from '../../../components/model/model.component';
+import { ScriptFormComponent } from './script-form/script-form.component';
 
 @Component({
   selector: 'app-upload-script-view',
@@ -24,45 +16,21 @@ import {
     SvgEditComponent,
     SgvTrashComponent,
     HttpClientModule,
+    ModelComponent,
+    ScriptFormComponent,
   ],
   templateUrl: './upload-script-view.component.html',
   styleUrls: ['./upload-script-view.component.css'],
 })
 export class UploadScriptViewComponent {
-  list: any[] = [];
-  scriptList: IScriptDemo[] = [];
-  scriptForm: FormGroup;
+  scriptList: IScript[] = [];
   selectedFile!: File; // Variable to store the selected file
+  isModelOpen = false;
 
-  constructor(
-    private fb: FormBuilder,
-    private scriptService: ScriptService,
-    private http: HttpClient
-  ) {
-    this.scriptForm = this.fb.group({
-      id_prueba: new FormControl('', [Validators.required]),
-      nombre: new FormControl('', [Validators.required]),
-      descripcion: new FormControl('', [Validators.required]),
-    });
-  }
+  constructor(private scriptService: ScriptService) {}
 
   ngOnInit(): void {
     this.getScripts();
-  }
-
-  onSubmit() {
-    if (this.scriptForm.valid) {
-      this.scriptService
-        .createScript(this.scriptForm.value, this.selectedFile)
-        .subscribe((response) => {
-          console.log(this.selectedFile);
-          console.log(this.scriptForm.value);
-
-          console.log(response);
-
-          this.getScripts();
-        });
-    }
   }
 
   onFileChange(event: any) {
@@ -75,12 +43,20 @@ export class UploadScriptViewComponent {
     this.scriptService.getAllScripts().subscribe({
       next: (response) => {
         const baseUrl = 'https://aecode.onrender.com';
-        response.map(
-          (item) =>
-            (item.prueba_multimedia = `${baseUrl}${item.prueba_multimedia}`)
-        );
+
+        response.forEach((item) => {
+          // Concatenar baseUrl a script_file
+          item.script_file = `${baseUrl}${item.script_file}`;
+
+          // Concatenar baseUrl a cada elemento en script_multimedia
+          item.script_multimedia = item.script_multimedia.map(
+            (multimediaItem) => `${baseUrl}${multimediaItem}`
+          );
+        });
+
         this.scriptList = response;
-        console.log(this.scriptList);
+        console.log('Server response: ', response);
+        console.log('Scriptlist:', this.scriptList);
       },
     });
   }
@@ -91,14 +67,5 @@ export class UploadScriptViewComponent {
         // this.Role = response;
       },
     });
-  }
-
-  onClose() {
-    // this.onCloseModel.emit(false);
-  }
-
-  resetForm() {
-    this.scriptForm.reset();
-    this.onClose();
   }
 }

@@ -1,0 +1,394 @@
+<div class="w-[1150px] h-[600px] m-auto bg-white rounded-t-md">
+  <div class="flex justify-between border-b-[1px] py-[15px] px-[30px]">
+    <h1>Añadir código o script</h1>
+    <app-svg-close-model
+      (click)="onClose()"
+      class="size-[30px] cursor-pointer"
+    />
+  </div>
+  <form [formGroup]="scriptForm" class="p-[30px] overflow-auto h-[537px]">
+    <div class="mb-[15px]">
+      <label for="script_name" class="block pb-[10px] font-medium"
+        >Nombre o Titulo del Script</label
+      >
+      <input
+        type="text"
+        id="script_name"
+        formControlName="script_name"
+        class="form-control bg-transparent border block w-full rounded-md focus:ring-main-purple focus:border-main-purple"
+        placeholder="Nombre o Titulo del Script"
+        required
+      />
+      @if(scriptForm.get('script_name')?.hasError('required') &&
+      scriptForm.get('script_name')?.touched){
+      <div class="form-error text-red-700">Complete el campo</div>
+      }
+    </div>
+
+    <div class="mb-[15px]">
+      <label class="block pb-[10px] font-medium">Cargar Script</label>
+      <div
+        class="w-full form-control bg-transparent border text-[10px] rounded-md py-[45px] border-gris focus:ring-main-purple focus:border-main-purple flex justify-center items-center"
+      >
+        <label
+          for="script_file"
+          class="cursor-pointer w-[400px] text-center flex flex-col"
+        >
+          <app-svg-file class="size-[60px] stroke-black fill-none mx-auto" />
+          <span class="leading-7"
+            >Arrastre los archivos aquí para agregarlos al Script O
+            <span class="text-main-purple">seleccione los archivos</span></span
+          >
+        </label>
+      </div>
+      <input
+        type="file"
+        id="script_file"
+        (change)="onFileScriptChange($event)"
+        class="form-control bg-transparent border text-[10px] rounded-md block w-auto p-1.5 focus:ring-main-purple focus:border-main-purple"
+        required
+      />
+      @if(scriptForm.get('script_file')?.hasError('required') &&
+      scriptForm.get('script_file')?.touched){
+      <div class="form-error text-red-700">Complete el campo</div>
+      }
+    </div>
+
+    <div class="grid grid-cols-2 gap-x-[60px]">
+      <div class="mb-[15px] font-[plusjakartasans-medium] text-[16px]">
+        <label for="script_description" class="block pb-[10px] font-medium">
+          Descripcion del Script
+        </label>
+
+        <input
+          type="text"
+          id="script_description"
+          formControlName="script_description"
+          class="form-control bg-transparent border block w-full h-[100px] rounded-md focus:ring-main-purple focus:border-main-purple"
+          required
+        />
+        @if(scriptForm.get('script_description')?.hasError('required') &&
+        scriptForm.get('script_description')?.touched){
+        <div class="form-error text-red-700">Complete el campo</div>
+        }
+      </div>
+
+      <div>
+        <div class="mb-[15px] font-[plusjakartasans-medium] text-[16px]">
+          <label class="block pb-[10px] font-medium">
+            Miniaturas o Videos
+          </label>
+          <div
+            class="w-[510px] h-[100px] form-control bg-transparent border text-[10px] rounded-md p-1.5 border-gris focus:ring-main-purple focus:border-main-purple flex justify-center items-center"
+          >
+            <label
+              for="script_multimedia"
+              class="cursor-pointer w-fit text-main-purple flex flex-col"
+            >
+              <app-svg-add-script
+                class="size-[30px] stroke-black fill-none mx-auto"
+              />
+              <span>Agregar archivos</span>
+            </label>
+          </div>
+          <input
+            type="file"
+            id="script_multimedia"
+            (change)="onFileMiniatureChange($event)"
+            class="form-control bg-transparent border text-[10px] rounded-md block w-auto p-1.5 focus:ring-main-purple focus:border-main-purple"
+            required
+          />
+          @if(scriptForm.get('script_multimedia')?.hasError('required') &&
+          scriptForm.get('script_multimedia')?.touched){
+          <div class="form-error text-red-700">Complete el campo</div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-x-[60px]">
+      <div class="mb-[15px] font-[plusjakartasans-medium] text-[16px]">
+        <label class="block pb-[10px] font-medium"> Software </label>
+        <div
+          (click)="showDropDownSoftware()"
+          class="flex flex-row relative gap-x-[5px]"
+        >
+          <div class="items-selected w-[455px] h-[50px] flex flex-row gap-x-2">
+            @for (item of softwareListSelected; track item.id_software) {
+            <app-pill-container [Software]="item"></app-pill-container>
+            }
+          </div>
+
+          <div
+            class="dropdown-button size-[50px] border-[1px] cursor-pointer rounded-md border-[#b4bbbf] flex justify-center items-center"
+          >
+            <app-svg-caret-down class="size-3.5" />
+          </div>
+
+          <div
+            [hidden]="!isDropdownSoftwareActive"
+            class="dropdown-list rounded-md border-[#b4bbbf] z-50 bg-white border-2 absolute right-0 top-[60px] py-[5px] px-[5px] w-full max-h-[170px] overflow-y-auto"
+          >
+            <ul class="space-y-[5px]">
+              @for (item of softwareList; track item.id_software) {
+              <li
+                class="py-[5px] px-[10px] hover:bg-gris-2 hover:text-main-purple w-full rounded-md cursor-pointer"
+                (click)="onSoftwareChange($event)"
+                value="{{ item.id_software }}"
+              >
+                {{ item.software_name }}
+              </li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-[15px] font-[plusjakartasans-medium] text-[16px]">
+        <label class="block pb-[10px] font-medium"
+          >Lenguajes de Programación</label
+        >
+
+        <div
+          (click)="showDropDownLangProg()"
+          class="flex flex-row relative gap-x-[5px]"
+        >
+          <div class="items-selected w-[455px] h-[50px] flex flex-row gap-x-2">
+            @for (item of proglangListSelected; track item.id_proglang) {
+            <app-pill-container [ProgLang]="item"></app-pill-container>
+            }
+          </div>
+
+          <div
+            class="dropdown-button size-[50px] border-[1px] cursor-pointer rounded-md border-[#b4bbbf] flex justify-center items-center"
+          >
+            <app-svg-caret-down class="size-3.5" />
+          </div>
+
+          <div
+            [hidden]="!isDropdownProgLangActive"
+            class="dropdown-list rounded-md z-50 border-[#b4bbbf] bg-white border-2 absolute right-0 top-[60px] py-[5px] px-[5px] w-full max-h-[170px] overflow-y-auto"
+          >
+            <ul class="space-y-[5px]">
+              @for (item of proLangList; track item.id_proglang) {
+              <li
+                class="py-[5px] px-[10px] hover:bg-gris-2 hover:text-main-purple w-full rounded-md cursor-pointer"
+                (click)="onProgLangChange($event)"
+                value="{{ item.id_proglang }}"
+              >
+                {{ item.proglang_name }}
+              </li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-[15px]">
+      <label class="block pb-[10px] font-medium"> Añadir etiquetas </label>
+
+      <div
+        (click)="showDropDownTag()"
+        class="flex flex-row relative gap-x-[5px]"
+      >
+        <div class="items-selected w-full h-[50px] flex flex-row gap-x-2">
+          @for (item of tagListSelected; track item.id_tag) {
+          <app-pill-container [Tag]="item"></app-pill-container>
+          }
+        </div>
+
+        <div
+          class="dropdown-button size-[50px] border-[1px] cursor-pointer rounded-md border-[#b4bbbf] flex justify-center items-center"
+        >
+          <app-svg-caret-down class="size-3.5" />
+        </div>
+
+        <div
+          [hidden]="!isDropdownTagActive"
+          class="dropdown-list rounded-md z-50 border-[#b4bbbf] bg-white border-2 absolute right-0 top-[60px] py-[5px] px-[5px] w-full max-h-[170px] overflow-y-auto"
+        >
+          <ul class="space-y-[5px]">
+            @for (item of tagList; track item.id_tag) {
+            <li
+              class="py-[5px] px-[10px] hover:bg-gris-2 hover:text-main-purple w-full rounded-md cursor-pointer"
+              (click)="onTagChange($event)"
+              value="{{ item.id_tag }}"
+            >
+              {{ item.tag_name }}
+            </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-container grid grid-cols-2 gap-x-[60px]">
+      <div>
+        <label class="block pb-[10px] font-medium"
+          >Añadir precio al Script</label
+        >
+
+        <div class="flex gap-x-[20px]">
+          @for (item of planList; track item.id_plan) {
+
+          <button
+            (click)="onPlanChange($event)"
+            value="{{ item.id_plan }}"
+            [id]="'buttonSelected' + item.id_plan"
+            selected="false"
+            class="w-[245px] h-[50px] bg-gris-2 rounded-md border-gris border-[1px]"
+          >
+            {{ item.plan_name }}
+          </button>
+          }
+        </div>
+      </div>
+      <div>
+        <label class="block pb-[10px] font-medium">Añadir monto y moneda</label>
+        <div class="flex flex-row gap-x-[20px]">
+          <div
+            (click)="showDropDownCurrency()"
+            class="flex flex-row relative gap-x-[5px]"
+          >
+            <div
+              class="items-selected w-[195px] h-[50px] flex flex-row gap-x-2"
+            >
+              @if (Currency) {
+              <span>{{ Currency.currency_name }}</span>
+              }
+            </div>
+
+            <div
+              class="dropdown-button size-[50px] border-[1px] cursor-pointer rounded-md border-[#b4bbbf] flex justify-center items-center"
+            >
+              <app-svg-caret-down class="size-3.5" />
+            </div>
+
+            <div
+              [hidden]="!isDropdownCurrencyActive"
+              class="dropdown-list rounded-md border-[#b4bbbf] z-50 bg-white border-2 absolute right-0 top-[60px] py-[5px] px-[5px] w-full max-h-[170px] overflow-y-auto"
+            >
+              <ul class="space-y-[5px]">
+                @for (item of currencyList; track item.id_currency) {
+                <li
+                  class="py-[5px] px-[10px] hover:bg-gris-2 hover:text-main-purple w-full rounded-md cursor-pointer"
+                  (click)="onCurrencyChange($event)"
+                  value="{{ item.id_currency }}"
+                >
+                  {{ item.currency_name }}
+                </li>
+                }
+              </ul>
+            </div>
+          </div>
+
+          <!-- <button
+            id="dropdownDefaultButton"
+            data-dropdown-toggle="dropdown-footer"
+            class="w-[245px] h-[50px] p-[10px] border-[1px] border-gris rounded-md flex justify-between items-center"
+            type="button"
+          >
+            Elegir moneda
+            <app-svg-caret-down class="size-3 fill-black" />
+          </button>
+
+        
+          <div
+            id="dropdown-footer"
+            class="z-10 w-[271px] hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
+          >
+            <ul
+              class="py-2 text-xs text-gray-700 dark:text-gray-200"
+              aria-labelledby="dropdownDefaultButton"
+            >
+              <li>
+                <a href="#" class="block px-4 py-2 text-xs">ESPAÑOL</a>
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 text-xs">INGLÉS</a>
+              </li>
+            </ul>
+          </div> -->
+          <input
+            class="form-control w-[245px] h-[50px] p-[10px] border-[1px] border-gris rounded-md"
+            type="number"
+            id="script_price"
+            formControlName="script_price"
+            placeholder="$00.00"
+            required
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="mb-[15px] font-[plusjakartasans-medium] text-[16px]">
+      <label for="id_prueba" class="block pb-[10px] font-medium"
+        >Nombre o Titulo del Script</label
+      >
+      <input
+        type="text"
+        id="id_prueba"
+        formControlName="id_prueba"
+        class="form-control bg-transparent border block w-full   border-main-purple rounded-md focus:ring-main-purple focus:border-main-purple"
+        placeholder="ID del script"
+        required
+      />
+      @if(scriptForm.get('id_prueba')?.hasError('required') &&
+      scriptForm.get('id_prueba')?.touched){
+      <div class="form-error text-red-700">Complete el campo</div>
+      }
+    </div>
+
+    <div class="mb-[15px] font-[plusjakartasans-medium] text-[16px]">
+      <label for="id_prueba" class="block pb-[10px] font-medium"
+        >Nombre o Titulo del Script</label
+      >
+      <input
+        type="text"
+        id="id_prueba"
+        formControlName="id_prueba"
+        class="form-control bg-transparent border block w-full   border-main-purple rounded-md focus:ring-main-purple focus:border-main-purple"
+        placeholder="ID del script"
+        required
+      />
+      @if(scriptForm.get('id_prueba')?.hasError('required') &&
+      scriptForm.get('id_prueba')?.touched){
+      <div class="form-error text-red-700">Complete el campo</div>
+      }
+    </div>
+
+    <div class="relative">
+      <label
+        for="prueba_multimedia"
+        class="block mb-1 text-[10px] font-medium dark:text-white"
+        >Subir script</label
+      >
+      <input
+        type="file"
+        id="prueba_multimedia"
+        (change)="onFileChange($event)"
+        class="form-control bg-transparent border text-[10px] rounded-md block w-auto p-1.5  border-main-purple focus:ring-main-purple focus:border-main-purple"
+        required
+      />
+      @if(scriptForm.get('prueba_multimedia')?.hasError('required') &&
+      scriptForm.get('prueba_multimedia')?.touched){
+      <div class="form-error text-red-700">Complete el campo</div>
+      }
+    </div> -->
+  </form>
+</div>
+
+<div
+  class="flex justify-between border-t-[1px] py-[15px] px-[30px] w-[1150px] overflow-auto m-auto bg-white rounded-b-md"
+>
+  <h2>
+    <span class="text-red-600">*</span> El asterisco indica que el campo es
+    obligatorio.
+  </h2>
+
+  <app-button type="submit" (click)="onSubmit()" class="flex flex-row gap-x-2">
+    <app-svg-save-script class="size-5 fill-none stroke-white" />
+    <span class="text-base">Guardar</span>
+  </app-button>
+</div>
