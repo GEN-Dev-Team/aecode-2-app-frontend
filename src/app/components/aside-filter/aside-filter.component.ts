@@ -1,15 +1,28 @@
 import { Component } from '@angular/core';
 import { AsideFilterItemComponent } from './aside-filter-item/aside-filter-item.component';
 import { FilterGroup, FilterItem } from './aside-filter-item';
+import { PillFilterComponent } from './pill-filter/pill-filter.component';
 
 @Component({
   selector: 'app-aside-filter',
   standalone: true,
-  imports: [AsideFilterItemComponent],
+  imports: [AsideFilterItemComponent, PillFilterComponent],
   templateUrl: './aside-filter.component.html',
   styleUrl: './aside-filter.component.css',
 })
 export class AsideFilterComponent {
+  filterListSelected: FilterItem[] = [];
+  filterSelected!: FilterItem;
+
+  addFilterToList(item: FilterItem) {
+    if (item.filterItemchecked && !this.filterListSelected.includes(item)) {
+      this.filterListSelected.push(item);
+    } else {
+      this.filterListSelected.splice(this.filterListSelected.indexOf(item), 1);
+    }
+    console.log(this.filterListSelected);
+  }
+
   languagesList: FilterGroup = {
     filterGroupCategory: 'Lenguajes',
     filterGroupElements: [

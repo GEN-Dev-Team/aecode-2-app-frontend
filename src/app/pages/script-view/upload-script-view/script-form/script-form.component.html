@@ -44,6 +44,8 @@
       <input
         type="file"
         id="script_file"
+        webkitdirectory
+        multiple
         (change)="onFileScriptChange($event)"
         class="form-control bg-transparent border text-[10px] rounded-md block w-auto p-1.5 focus:ring-main-purple focus:border-main-purple"
         required
@@ -52,6 +54,10 @@
       scriptForm.get('script_file')?.touched){
       <div class="form-error text-red-700">Complete el campo</div>
       }
+    </div>
+
+    <div>
+      {{ fileTreeStructure }}
     </div>
 
     <div class="grid grid-cols-2 gap-x-[60px]">

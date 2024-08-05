@@ -7,3 +7,38 @@
   font-family: "plusjakartasans-medium";
   letter-spacing: -0.2px;
 }
+
+/* CSS */
+
+.script-hover {
+  height: 141px;
+  padding-inline: 15px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: white;
+  font-family: "plusjakartasans-regular";
+  font-size: 12px;
+  border-radius: 8px 8px 0px 0px;
+  background: linear-gradient(
+    177deg,
+    rgba(12, 0, 38, 0.68) 50.35%,
+    rgba(149, 127, 193, 0) 97.41%
+  );
+}
+
+.script-description {
+  height: 48px; /* Calcula en función de 3 líneas de texto */
+  line-height: 16px; /* Línea de altura del texto */
+  display: -webkit-box; /* Utiliza el modelo de caja flexible de WebKit */
+  -webkit-box-orient: vertical; /* Orienta las líneas de la caja en forma vertical */
+  -webkit-line-clamp: 3; /* Limita el número de líneas a mostrar a 3 */
+  overflow: hidden; /* Oculta el contenido que se desborda */
+  text-overflow: ellipsis; /* Añade puntos suspensivos al final del texto truncado */
+  white-space: normal; /* Permite que el texto envuelva en múltiples líneas */
+}
+
+.script-hover:hover .script-description {
+  /* Estilos que se aplican cuando el contenedor principal tiene hover */
+  -webkit-line-clamp: unset; /* Deshabilitar la limitación de líneas */
+  height: auto; /* Permitir que la altura se ajuste automáticamente */
+}

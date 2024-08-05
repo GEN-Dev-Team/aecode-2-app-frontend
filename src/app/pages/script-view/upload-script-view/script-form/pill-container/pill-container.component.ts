@@ -17,4 +17,5 @@ export class PillContainerComponent {
   @Input() Software!: ISoftware;
   @Input() Currency!: ICurrency;
   @Input() Tag!: ITag;
+  @Input() square: boolean = false;
 }

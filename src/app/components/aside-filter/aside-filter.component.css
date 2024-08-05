@@ -1,0 +1,11 @@
+.filters-selected {
+  margin-bottom: 24px;
+  width: 244px;
+  min-height: 56px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filters-selected p {
+  margin-right: 5px;
+}

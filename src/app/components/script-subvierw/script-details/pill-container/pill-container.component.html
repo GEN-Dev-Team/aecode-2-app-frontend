@@ -17,16 +17,5 @@
   />
   <p>{{ Software.software_name }}</p>
 
-  } @if(Currency) {
-  <img
-    [src]="Currency.id_currency"
-    [alt]="Currency.currency_name"
-    class="size-4 rounded-full"
-  />
-  <p>{{ Currency.currency_name }}</p>
-
-  } @if(Tag) {
-  <p>{{ Tag.tag_name }}</p>
   }
-  <app-svg-close-model class="size-[15px] fill-[#C4C4C4] cursor-pointer" />
 </div>

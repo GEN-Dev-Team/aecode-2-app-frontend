@@ -73,8 +73,9 @@ export class ScriptFormComponent {
   multimediaListSelected: File[] = [];
 
   scriptForm: FormGroup;
-  selectedFile!: File; // Variable to store the selected file
+  selectedFiles!: File[]; // Variable to store the selected file
   selectedMiniature!: File; // Variable to store the selected file
+  fileTreeStructure: any = {};
 
   constructor(
     private fb: FormBuilder,
@@ -122,11 +123,13 @@ export class ScriptFormComponent {
     });
 
     if (this.scriptForm.valid) {
-      console.log(this.scriptForm.value),
+      console.log(this.multimediaListSelected),
+        console.log(this.selectedFiles),
+        console.log(this.scriptForm.value),
         this.scriptService
           .createScript(
             this.multimediaListSelected,
-            this.selectedFile,
+            this.selectedFiles,
             this.scriptForm.value
           )
           .subscribe((response) => {
@@ -140,10 +143,34 @@ export class ScriptFormComponent {
   }
 
   onFileScriptChange(event: any) {
-    if (event.target.files.length > 0) {
-      this.selectedFile = event.target.files[0];
-      console.log(this.selectedFile);
-    }
+    const selectedFilesList = event.target.files; // FileList
+    this.selectedFiles = Array.from(selectedFilesList); // Convertir FileList a Array<File>
+
+    // Organizar los archivos en una estructura de árbol
+    this.fileTreeStructure = this.organizeFiles(this.selectedFiles);
+
+    // Mostrar la estructura completa del árbol en la consola
+    console.log('Estructura de árbol completa:', this.fileTreeStructure);
+  }
+
+  // Organiza los archivos en una estructura de carpetas
+  organizeFiles(files: File[]): any {
+    const fileTree: any = {};
+
+    files.forEach((file) => {
+      const path = file.webkitRelativePath.split('/');
+
+      let currentLevel = fileTree;
+
+      path.forEach((part, index) => {
+        if (!currentLevel[part]) {
+          currentLevel[part] = index === path.length - 1 ? file : {};
+        }
+        currentLevel = currentLevel[part];
+      });
+    });
+
+    return fileTree;
   }
 
   onFileMiniatureChange(event: any) {
@@ -165,7 +192,6 @@ export class ScriptFormComponent {
           )
         );
         this.scriptList = response;
-        console.log(this.scriptList);
       },
     });
   }

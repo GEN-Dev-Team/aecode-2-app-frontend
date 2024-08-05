@@ -1,12 +1,26 @@
 <aside
   id="separator-sidebar"
-  class="w-[272px] h-full transition-transform -translate-x-full sm:translate-x-0 border-solid border-r-[1px] broder-gris-1"
+  class="w-[272px] pt-[40px] h-full transition-transform -translate-x-full sm:translate-x-0 border-solid border-r-[1px] broder-gris-1"
   aria-label="Sidebar"
 >
-  <div></div>
+  <div class="filters-selected gap-x-[5px]">
+    @for (item of filterListSelected; track item.filterItemId) {
+    <app-pill-filter>{{ item.filterItemName }}</app-pill-filter>
+
+    }
+  </div>
   <div class="h-full py-4 overflow-y-auto">
-    <app-aside-filter-item [filterGroup]="languagesList" />
-    <app-aside-filter-item [filterGroup]="softwaresList" />
-    <app-aside-filter-item [filterGroup]="tagsList" />
+    <app-aside-filter-item
+      (filterSelected)="addFilterToList($event)"
+      [filterGroup]="languagesList"
+    />
+    <app-aside-filter-item
+      (filterSelected)="addFilterToList($event)"
+      [filterGroup]="softwaresList"
+    />
+    <app-aside-filter-item
+      (filterSelected)="addFilterToList($event)"
+      [filterGroup]="tagsList"
+    />
   </div>
 </aside>

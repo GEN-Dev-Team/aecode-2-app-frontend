@@ -1,15 +1,20 @@
 <div
-  class="scritpt-container-item flex flex-col mx-auto rounded-md bg-gris-2 w-[331px] h-[376px]"
+  class="scritpt-container-item relative flex flex-col mx-auto rounded-md bg-gris-2 w-[331px] h-[376px]"
 >
   <a
-    [routerLink]="['/scripts', '{{ script.script_name }}']"
-    class="pb-2 h-[251px] rounded-t-md"
+    [routerLink]="'script-view' + '/' + [script.id_script]"
+    class="pb-2 h-[251px] rounded-t-md group"
   >
     <img
       class="w-full h-full rounded-t-md"
-      src="{{ script.script_multimedia }}"
+      src="{{ script.script_multimedia[0] }}"
       alt=""
     />
+    <div class="script-hover hidden group-hover:block absolute top-0 left-0">
+      <div class="script-description">
+        {{ script.script_description }}
+      </div>
+    </div>
   </a>
 
   <div class="px-4 pt-1">
@@ -19,7 +24,7 @@
     <div class="-mt-3 text-xs text-gray-500">
       <span>Publicado</span>
       <span class="px-1.5">•</span>
-      <span>Hace 10 días</span>
+      <span>{{ script.script_date }}</span>
     </div>
     <hr class="mt-5" />
     <div class="flex flex-row items-center justify-between">

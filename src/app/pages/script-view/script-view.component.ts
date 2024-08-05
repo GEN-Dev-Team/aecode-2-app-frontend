@@ -12,6 +12,7 @@ import { ModelComponent } from '../../components/model/model.component';
 import { IScript } from '../../models/script';
 import { ScriptService } from '../../core/services/script.service';
 import { ScriptFormComponent } from './upload-script-view/script-form/script-form.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-script-view',
@@ -39,7 +40,10 @@ export class ScriptViewComponent {
   editScript = false;
   isModelOpen = false;
 
-  constructor(private scriptService: ScriptService) {}
+  constructor(
+    private scriptService: ScriptService,
+    public route: ActivatedRoute
+  ) {}
 
   getAllScripts() {
     this.scriptService.getAllScripts().subscribe((response) => {

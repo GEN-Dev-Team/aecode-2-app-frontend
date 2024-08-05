@@ -21,7 +21,7 @@ export class ScriptService {
     return this.http.get<IScript>(`${this.apiurl}/${id}`);
   }
 
-  createScript(scriptMiniature: File[], scriptFile: File, scriptData: any) {
+  createScript(scriptMiniature: File[], scriptFile: File[], scriptData: any) {
     const formData = new FormData();
 
     // Agregar cada archivo de scriptMiniature al formData
@@ -30,7 +30,9 @@ export class ScriptService {
     });
 
     // Agregar el archivo principal scriptFile al formData
-    formData.append('Sscript', scriptFile);
+    scriptMiniature.forEach((scriptFile, index) => {
+      formData.append(`Sscript`, scriptFile, scriptFile.name);
+    });
 
     // Agregar los datos adicionales scriptData al formData
     formData.append('Sdata', JSON.stringify(scriptData));

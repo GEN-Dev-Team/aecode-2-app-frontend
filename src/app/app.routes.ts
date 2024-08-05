@@ -13,13 +13,17 @@ import { ScriptSubvierwComponent } from './components/script-subvierw/script-sub
 export const routes: Routes = [
   { path: '', redirectTo: '/scripts', pathMatch: 'full' },
   { path: 'login', component: LogInComponent },
+  { path: 'scripts', component: ScriptViewComponent },
   {
     path: 'scripts',
-    title: 'Scripts',
-    component: ScriptViewComponent,
+    children: [
+      {
+        path: 'script-view/:id_script',
+        title: 'Script View',
+        component: ScriptSubvierwComponent,
+      },
+    ],
   },
-  { path: 'scripts/:scriptId', component: ScriptSubvierwComponent },
-
   { path: 'feed', title: 'Feed', component: FeedViewComponent },
   { path: 'offers', title: 'Offers', component: OffersViewComponent },
   {

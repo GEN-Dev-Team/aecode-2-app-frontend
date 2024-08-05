@@ -1,39 +1,73 @@
-<div class="script-details p-[15px] rounded-md border-[1px]">
-  <div class="">
-    <img src="" alt="" class="rounded-full size-5" />
+<div
+  class="script-details p-[15px] rounded-md border-[1px] font-[plusjakartasans-medium]"
+>
+  <div class="flex flex-row gap-x-[10px]">
+    <img
+      src="{{ script.profile.profile_image }}"
+      alt=""
+      class="rounded-full size-10"
+    />
     <div class="flex flex-col">
-      <div class="flex flex-row">
-        <span>Marilin Tapur</span><span>Siguiendo</span>
+      <div class="flex flex-row items-center">
+        <div>
+          {{ script.profile.profile_Fullname }}
+        </div>
+        <div class="text-main-purple">Siguiendo</div>
+        <div
+          class="rounded-full size-4 bg-main-purple relative items-center justify-center flex ms-1"
+        >
+          <app-svg-check class="size-[9px] absolute pt-[1px]" />
+        </div>
       </div>
-      <span></span>
+      <div
+        class="flex flex-row text-[10px] text-gray-400 font-[plusjakartasans-light]"
+      >
+        Ingeniero civil
+      </div>
     </div>
   </div>
 
   <div>
-    <h2>Automatizacion del modelado de Pilotes con la API de SAP2000</h2>
-    <p class="h-[100px] truncate">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias id
-      culpa doloribus reiciendis eligendi? Maiores dolorum, facere expedita
-      aspernatur id officiis commodi sunt optio, minus fuga laborum accusantium
-      corporis veritatis rem voluptate a voluptates sed, aut quae dolore quidem?
-      Adipisci.
+    <h2 class="text-xs text-main-purple">{{ script.script_name }}</h2>
+    <p class="min-h-[100px] overflow-ellipsis">
+      {{ script.script_description }}
     </p>
-    <span>Ver mas</span>
+    <span
+      class="flex flex-row text-[10px] text-gray-400 font-[plusjakartasans-light]"
+      >Ver más
+    </span>
   </div>
 
   <div>
     <h2>Mas informacion</h2>
-    <img src="" alt="" class="rounded-md border-main-purple border-[1px]" />
+
+    <app-multimedia-carousel [multimedia]="script.script_multimedia" />
+
+    @for (item of script.script_multimedia; track item) {
+    <p>{{ item }}</p>
+    <!-- <img
+      src="{{ item }}"
+      alt=""
+      class="rounded-md border-main-purple border-[1px]"
+    /> -->
+    }
     <div class="flex flex-row gap-[10px]">
-      <div>SAP2000</div>
-      <div>Python</div>
-      <div>Excel</div>
-      <div>Jupyter Notebook</div>
+      @for (item of script.proglang; track item.id_proglang) {
+      <app-pill-container [ProgLang]="item" />
+      } @for (item of script.software; track item.id_software) {
+      <app-pill-container [Software]="item" />
+      }
     </div>
     <div>
-      <p>Publicado :<span>02/02/2024 - 21:46</span></p>
-      <p>Ultima version :<span>16/02/2024</span></p>
-      <p>Ultima actualizacion :<span>20/02/2024</span></p>
+      <p>
+        Publicado :<span>{{ script.script_date }}</span>
+      </p>
+      <p>
+        Ultima version :<span>{{ script.script_date }}</span>
+      </p>
+      <p>
+        Ultima actualizacion :<span>{{ script.script_date }}</span>
+      </p>
       <p>Licencia :<span>AECODE</span></p>
     </div>
   </div>

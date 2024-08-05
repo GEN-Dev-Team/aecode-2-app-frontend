@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FilterItemComponent } from './filter-item/filter-item.component';
 import { FilterGroup, FilterItem } from './model';
 
@@ -11,4 +11,10 @@ import { FilterGroup, FilterItem } from './model';
 })
 export class AsideFilterItemComponent {
   @Input() filterGroup!: FilterGroup;
+  @Output() filterSelected = new EventEmitter<FilterItem>();
+
+  filterItemSelected(item: FilterItem) {
+    item.filterItemchecked = !item.filterItemchecked;
+    this.filterSelected.emit(item);
+  }
 }

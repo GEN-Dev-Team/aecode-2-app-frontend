@@ -1,0 +1,45 @@
+<!-- archivo: tree-node.component.html -->
+<div
+  class="font-[plusjakartasans-medium] max-h-[650px] text-base py-2 px-3 overflow-y-auto overflow-x-hidden text-nowrap"
+>
+  <!-- Verificar si el nodo es un directorio -->
+  @if (isDirectory(node)) {
+  <div>
+    <button
+      (click)="expanded = !expanded"
+      class="flex flex-row gap-x-2 items-center"
+    >
+      @if (expanded) {
+      <app-svg-caret-right class="size-[15px] fill-main-purple" />
+      <app-svg-directory-open class="size-[22px] fill-main-purple" />
+
+      } @else {
+      <app-svg-caret-down class="size-[15px] fill-main-purple" />
+      <app-svg-directory-closed class="size-[22px] fill-main-purple" />
+
+      }
+      {{ nodeName }}
+    </button>
+    <!-- Mostrar los hijos si el directorio está expandido -->
+    @if (expanded) {
+    <div class="ms-4 gap-y-4">
+      <!-- Iterar sobre los elementos dentro del directorio -->
+      @for ( key of getKeys(node); track key) {
+      <app-tree-node [nodeName]="key" [node]="node[key]"></app-tree-node>
+      }
+    </div>
+    }
+  </div>
+  } @else {
+  <!-- Renderizar el archivo -->
+  <span (click)="onFileClick(node)" class="cursor-pointer text-nowrap">
+    🗎 {{ nodeName }}
+  </span>
+
+  @if (fileContent) {
+  <pre
+    >{{ fileContent }}
+ </pre
+  >
+  } }
+</div>

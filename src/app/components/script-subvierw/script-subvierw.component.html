@@ -1,6 +1,6 @@
 <app-script-header />
 <div class="p-[30px] gap-x-[30px] flex flex-row bg-white">
-  <app-script-file-tree />
-  <app-script-content />
-  <app-script-details />
+  <app-script-file-tree (scriptContent)="getScriptContent($event)" />
+  <app-script-content [scriptContent]="scriptContent" [script]="Script" />
+  <app-script-details [script]="Script" />
 </div>
